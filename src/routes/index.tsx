@@ -1,6 +1,27 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Building2, Home, ArrowRight, Wrench, Scissors, Phone } from "lucide-react";
+import {
+  Building2, Home, ArrowRight, Wrench, Scissors, Phone, Send,
+  Cog, Disc3, RotateCw, Hand, Shirt, CircleDot,
+  ClipboardList, Search, Truck, CheckCircle2, Camera,
+} from "lucide-react";
 import { PageShell } from "@/components/PageShell";
+import { BeforeAfter } from "@/components/BeforeAfter";
+
+const breakdowns = [
+  { icon: Cog, name: "Замена газлифта", desc: "Кресло перестало держать высоту" },
+  { icon: Disc3, name: "Замена крестовины", desc: "Треснула или скрипит при нагрузке" },
+  { icon: RotateCw, name: "Ремонт механизма качания", desc: "Перманент-контакт, топ-ган, мультиблок" },
+  { icon: Hand, name: "Замена подлокотников", desc: "2D / 3D / 4D, накладки и крепления" },
+  { icon: Shirt, name: "Перетяжка обивки", desc: "Экокожа, ткань, сетка, натуральная кожа" },
+  { icon: CircleDot, name: "Замена роликов", desc: "Полиуретан — не царапает паркет" },
+];
+
+const steps = [
+  { icon: ClipboardList, title: "Оставляете заявку", desc: "Telegram, телефон или форма на сайте — как удобнее" },
+  { icon: Search, title: "Бесплатная диагностика", desc: "По фото за 15 минут или с выездом мастера" },
+  { icon: Truck, title: "Забираем кресло", desc: "Мастер приезжает к вам или вывозим в цех" },
+  { icon: CheckCircle2, title: "Готово за 1–2 дня", desc: "Возвращаем кресло с гарантией до 12 месяцев" },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -114,6 +135,103 @@ function Index() {
             </p>
             <Link to="/remont" className="btn-ghost">Подробнее</Link>
           </div>
+        </div>
+      </section>
+
+      {/* BEFORE / AFTER */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-24">
+          <div className="grid lg:grid-cols-[1fr_2fr] gap-10 items-end mb-10">
+            <div>
+              <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-4">// До / После</div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Перетащите ползунок</h2>
+            </div>
+            <p className="text-muted-foreground max-w-xl lg:text-right lg:ml-auto">
+              Так выглядит типичное офисное кресло до и после нашей работы. Каркас тот же — обивка, поролон и механика новые.
+            </p>
+          </div>
+          <BeforeAfter />
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 font-mono text-xs uppercase tracking-wider text-muted-foreground">
+            <span>← потёртая ткань, провисший поролон</span>
+            <span className="text-accent">экокожа, новый поролон, гарантия 12 мес →</span>
+          </div>
+        </div>
+      </section>
+
+      {/* BREAKDOWNS */}
+      <section className="border-b border-border bg-surface">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-24">
+          <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
+            <div>
+              <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-4">// Поломки</div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
+                Что устраняем
+              </h2>
+            </div>
+            <Link to="/remont" className="btn-ghost">Все услуги</Link>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-border">
+            {breakdowns.map((b) => (
+              <div
+                key={b.name}
+                className="group bg-background p-6 lg:p-8 transition-all duration-200 hover:bg-surface-elevated hover:scale-[1.02] hover:shadow-[0_10px_40px_-10px_oklch(0.7_0.18_40_/_0.4)] hover:z-10 relative cursor-default"
+              >
+                <b.icon className="w-10 h-10 text-accent mb-5 transition-transform duration-200 group-hover:scale-110 group-hover:rotate-[-6deg]" strokeWidth={1.5} />
+                <h3 className="font-bold text-lg mb-1">{b.name}</h3>
+                <p className="text-muted-foreground text-sm">{b.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12 flex justify-center">
+            <a
+              href="https://t.me/drago_bot"
+              target="_blank"
+              rel="noreferrer"
+              className="btn-accent text-base px-8 py-5 group"
+            >
+              <Camera className="w-5 h-5 group-hover:rotate-12 transition-transform" />
+              Получить оценку по фото
+              <Send className="w-4 h-4 opacity-70" />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW WE WORK */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-24">
+          <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-4">// Процесс</div>
+          <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-12">Как мы работаем</h2>
+
+          <div className="md:hidden -mx-4 px-4 overflow-x-auto pb-4 scrollbar-thin">
+            <ol className="flex gap-4 snap-x snap-mandatory">
+              {steps.map((s, i) => (
+                <li key={s.title} className="snap-start shrink-0 w-[78%] bg-surface border border-border p-6 relative">
+                  <div className="font-mono text-5xl font-bold text-accent/30 absolute top-3 right-4">{String(i + 1).padStart(2, "0")}</div>
+                  <s.icon className="w-9 h-9 text-accent mb-4" strokeWidth={1.5} />
+                  <h3 className="font-bold text-lg mb-2">{s.title}</h3>
+                  <p className="text-muted-foreground text-sm">{s.desc}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <ol className="hidden md:grid md:grid-cols-4 gap-px bg-border">
+            {steps.map((s, i) => (
+              <li key={s.title} className="bg-background p-8 relative group hover:bg-surface transition-colors">
+                <div className="font-mono text-6xl font-bold text-accent/20 absolute top-4 right-4 group-hover:text-accent/40 transition-colors">
+                  {String(i + 1).padStart(2, "0")}
+                </div>
+                <s.icon className="w-10 h-10 text-accent mb-6 transition-transform group-hover:scale-110" strokeWidth={1.5} />
+                <h3 className="font-bold text-lg mb-2">{s.title}</h3>
+                <p className="text-muted-foreground text-sm">{s.desc}</p>
+                {i < steps.length - 1 && (
+                  <ArrowRight className="hidden lg:block w-5 h-5 text-accent absolute top-1/2 -right-3 -translate-y-1/2 z-10 bg-background p-0.5 box-content" />
+                )}
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
