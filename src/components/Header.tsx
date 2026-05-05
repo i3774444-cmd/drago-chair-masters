@@ -60,7 +60,12 @@ export function Header() {
             <Phone className="w-4 h-4" aria-hidden="true" />
             +375&nbsp;29&nbsp;123-45-67
           </a>
-          <a href="/kontakty#form" className="btn-accent text-xs px-3 py-2 hidden xl:inline-flex">Заказать&nbsp;звонок</a>
+          <a
+            href="/kontakty#form"
+            className="hidden xl:inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground font-bold px-3 py-2 uppercase tracking-wider text-xs border-2 border-accent hover:brightness-110 transition-all whitespace-nowrap"
+          >
+            Заказать&nbsp;звонок
+          </a>
           <ThemeToggle />
           <button
             type="button"
