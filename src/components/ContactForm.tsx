@@ -141,8 +141,9 @@ export function ContactForm({ source }: { source: string }) {
     setErrors({});
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
     const result = schema.safeParse(values);
     if (!result.success) {
       const errs: Errors = {};
@@ -156,14 +157,44 @@ export function ContactForm({ source }: { source: string }) {
       return;
     }
     if (result.data.website) return; // honeypot trip
-    const { website, ...payload } = result.data;
-    void website;
-    console.log("[DRAGO form]", { source, ...payload, photos: photos.map((p) => p.file.name) });
-    toast.success("Заявка отправлена!", {
-      description: "Мастер свяжется в течение часа.",
-    });
-    setDone(true);
-    setValues(initial);
+
+    setSubmitting(true);
+    try {
+      const photosPayload = await Promise.all(
+        photos.map(async (p) => ({
+          name: p.file.name,
+          type: p.file.type,
+          data: await fileToBase64(p.file),
+        })),
+      );
+      const res = await submit({
+        data: {
+          source,
+          clientType: result.data.clientType,
+          name: result.data.name,
+          phone: result.data.phone,
+          comment: result.data.comment ?? "",
+          company: result.data.company ?? "",
+          unn: result.data.unn ?? "",
+          website: "",
+          photos: photosPayload,
+        },
+      });
+      if (!res?.ok) {
+        toast.error("Не удалось отправить", { description: res?.error ?? "Попробуйте ещё раз." });
+        return;
+      }
+      toast.success("Заявка отправлена!", { description: "Мастер свяжется в течение часа." });
+      photos.forEach((p) => URL.revokeObjectURL(p.url));
+      setPhotos([]);
+      setDone(true);
+      setValues(initial);
+    } catch (err) {
+      console.error(err);
+      toast.error("Ошибка сети", { description: "Проверьте подключение и попробуйте снова." });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (done) {
