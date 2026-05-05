@@ -4,6 +4,15 @@ import { ContactForm } from "@/components/ContactForm";
 import { Faq, SERVICE_FAQ } from "@/components/Faq";
 import { ShieldCheck } from "lucide-react";
 
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Ремонт офисных и компьютерных кресел",
+  provider: { "@type": "LocalBusiness", name: "DRAGO", "@id": "https://drago.by/#business" },
+  areaServed: "Минск",
+  offers: { "@type": "Offer", priceCurrency: "BYN", price: "45", url: "https://drago.by/remont" },
+};
+
 export const Route = createFileRoute("/remont")({
   head: () => ({
     meta: [
@@ -12,6 +21,7 @@ export const Route = createFileRoute("/remont")({
       { property: "og:title", content: "Ремонт кресел — DRAGO" },
       { property: "og:description", content: "День в день или на следующий. С выездом к вам. Гарантия на все работы." },
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(serviceLd) }],
   }),
   component: Page,
 });

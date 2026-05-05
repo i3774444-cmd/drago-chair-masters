@@ -9,6 +9,7 @@ import { BeforeAfter } from "@/components/BeforeAfter";
 import { ContactForm } from "@/components/ContactForm";
 import { CountUp } from "@/components/CountUp";
 import { nbsp } from "@/lib/nbsp";
+import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 
 const breakdowns = [
   { icon: Cog, name: "Замена газлифта", desc: "Кресло перестало держать высоту" },
@@ -254,6 +255,22 @@ function Index() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* REVIEWS */}
+      <section className="border-b border-border">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-24">
+          <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
+            <div>
+              <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-4">// Отзывы</div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Что говорят клиенты</h2>
+            </div>
+            <div className="font-mono text-sm text-muted-foreground">
+              <span className="text-3xl font-bold text-accent">4.9</span> / 5 · 87 отзывов
+            </div>
+          </div>
+          <ReviewsCarousel />
         </div>
       </section>
 
