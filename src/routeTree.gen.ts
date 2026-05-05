@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as RemontRouteImport } from './routes/remont'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PeretyazhkaRouteImport } from './routes/peretyazhka'
 import { Route as KontaktyRouteImport } from './routes/kontakty'
 import { Route as KejsyRouteImport } from './routes/kejsy'
@@ -21,6 +22,11 @@ import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 const RemontRoute = RemontRouteImport.update({
   id: '/remont',
   path: '/remont',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PeretyazhkaRoute = PeretyazhkaRouteImport.update({
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/kejsy': typeof KejsyRoute
   '/kontakty': typeof KontaktyRoute
   '/peretyazhka': typeof PeretyazhkaRoute
+  '/privacy': typeof PrivacyRoute
   '/remont': typeof RemontRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/kejsy': typeof KejsyRoute
   '/kontakty': typeof KontaktyRoute
   '/peretyazhka': typeof PeretyazhkaRoute
+  '/privacy': typeof PrivacyRoute
   '/remont': typeof RemontRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/kejsy': typeof KejsyRoute
   '/kontakty': typeof KontaktyRoute
   '/peretyazhka': typeof PeretyazhkaRoute
+  '/privacy': typeof PrivacyRoute
   '/remont': typeof RemontRoute
   '/blog/$slug': typeof BlogSlugRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/kejsy'
     | '/kontakty'
     | '/peretyazhka'
+    | '/privacy'
     | '/remont'
     | '/blog/$slug'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/kejsy'
     | '/kontakty'
     | '/peretyazhka'
+    | '/privacy'
     | '/remont'
     | '/blog/$slug'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/kejsy'
     | '/kontakty'
     | '/peretyazhka'
+    | '/privacy'
     | '/remont'
     | '/blog/$slug'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   KejsyRoute: typeof KejsyRoute
   KontaktyRoute: typeof KontaktyRoute
   PeretyazhkaRoute: typeof PeretyazhkaRoute
+  PrivacyRoute: typeof PrivacyRoute
   RemontRoute: typeof RemontRoute
 }
 
@@ -140,6 +153,13 @@ declare module '@tanstack/react-router' {
       path: '/remont'
       fullPath: '/remont'
       preLoaderRoute: typeof RemontRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/peretyazhka': {
@@ -211,6 +231,7 @@ const rootRouteChildren: RootRouteChildren = {
   KejsyRoute: KejsyRoute,
   KontaktyRoute: KontaktyRoute,
   PeretyazhkaRoute: PeretyazhkaRoute,
+  PrivacyRoute: PrivacyRoute,
   RemontRoute: RemontRoute,
 }
 export const routeTree = rootRouteImport

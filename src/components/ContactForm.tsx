@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
-import { Send, CheckCircle2, Building2, User } from "lucide-react";
+import { Send, CheckCircle2, Building2, User, ImagePlus, X } from "lucide-react";
 import { toast } from "sonner";
+import { Link } from "@tanstack/react-router";
 
 // +375 (XX) XXX-XX-XX
 const PHONE_RE = /^\+375\s?\(?\d{2}\)?\s?\d{3}-?\d{2}-?\d{2}$/;
