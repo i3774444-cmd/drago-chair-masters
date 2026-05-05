@@ -17,25 +17,35 @@ export const Route = createFileRoute("/kejsy")({
   component: Page,
 });
 
+type Kind = "peretyazhka" | "remont" | "both";
+
 type Case = {
   id: string;
   client: string;
   work: string;
   material: string;
   tone: "warm" | "cool" | "neutral";
+  kind: Kind;
 };
 
 const cases: Case[] = [
-  { id: "1", client: "БелАЗ · 42 кресла", work: "Перетяжка операторских кресел", material: "Антивандальная ткань", tone: "warm" },
-  { id: "2", client: "МТС · контакт-центр", work: "Ремонт механики 28 шт", material: "Газлифты, ролики", tone: "cool" },
-  { id: "3", client: "Частный заказ", work: "Перетяжка Herman Miller Aeron", material: "Оригинальная сетка mesh", tone: "neutral" },
-  { id: "4", client: "Белпочта · 16 кресел", work: "Перетяжка + ремонт", material: "Экокожа премиум", tone: "warm" },
-  { id: "5", client: "DXRacer", work: "Восстановление после кота", material: "Экокожа, ремонт каркаса", tone: "cool" },
-  { id: "6", client: "Belshina · офис", work: "Перетяжка кресел руководителей", material: "Натуральная кожа", tone: "neutral" },
-  { id: "7", client: "IT-компания", work: "Ремонт 20 кресел Comfort Seating", material: "Замена сетки и качания", tone: "warm" },
-  { id: "8", client: "Юр. фирма", work: "Перетяжка приёмной", material: "Экокожа Antara", tone: "cool" },
-  { id: "9", client: "Частная квартира", work: "Перетяжка геймерского кресла", material: "Ткань + контрастная строчка", tone: "neutral" },
+  { id: "1", client: "БелАЗ · 42 кресла", work: "Перетяжка операторских кресел", material: "Антивандальная ткань", tone: "warm", kind: "peretyazhka" },
+  { id: "2", client: "МТС · контакт-центр", work: "Ремонт механики 28 шт", material: "Газлифты, ролики", tone: "cool", kind: "remont" },
+  { id: "3", client: "Частный заказ", work: "Перетяжка Herman Miller Aeron", material: "Оригинальная сетка mesh", tone: "neutral", kind: "peretyazhka" },
+  { id: "4", client: "Белпочта · 16 кресел", work: "Перетяжка + ремонт", material: "Экокожа премиум", tone: "warm", kind: "both" },
+  { id: "5", client: "DXRacer", work: "Восстановление после кота", material: "Экокожа, ремонт каркаса", tone: "cool", kind: "both" },
+  { id: "6", client: "Belshina · офис", work: "Перетяжка кресел руководителей", material: "Натуральная кожа", tone: "neutral", kind: "peretyazhka" },
+  { id: "7", client: "IT-компания", work: "Ремонт 20 кресел Comfort Seating", material: "Замена сетки и качания", tone: "warm", kind: "remont" },
+  { id: "8", client: "Юр. фирма", work: "Перетяжка приёмной", material: "Экокожа Antara", tone: "cool", kind: "peretyazhka" },
+  { id: "9", client: "Частная квартира", work: "Перетяжка геймерского кресла", material: "Ткань + контрастная строчка", tone: "neutral", kind: "peretyazhka" },
 ];
+
+const filters = [
+  { id: "all", label: "Все работы" },
+  { id: "peretyazhka", label: "Перетяжка" },
+  { id: "remont", label: "Ремонт" },
+  { id: "both", label: "Комплекс" },
+] as const;
 
 function Tile({ tone, label }: { tone: Case["tone"]; label: string }) {
   const bg =
