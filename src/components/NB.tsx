@@ -1,12 +1,15 @@
+import { createElement, type ElementType } from "react";
 import { nbsp } from "@/lib/nbsp";
 
-/** Рендерит текст с автоматически расставленными неразрывными пробелами
- *  после коротких предлогов/союзов и между числом и следующим словом. */
-export function NB({ children, as: Tag = "span", className }: {
+/** Рендерит текст с автоматически расставленными неразрывными пробелами. */
+export function NB({
+  children,
+  as = "span",
+  className,
+}: {
   children: string;
-  as?: keyof React.JSX.IntrinsicElements;
+  as?: ElementType;
   className?: string;
 }) {
-  // @ts-expect-error - dynamic tag
-  return <Tag className={className}>{nbsp(children)}</Tag>;
+  return createElement(as, { className }, nbsp(children));
 }
