@@ -5,6 +5,7 @@ import { Wrench, Scissors, Search, Truck, Gift } from "lucide-react";
 import { zodValidator, fallback } from "@tanstack/zod-adapter";
 import { z } from "zod";
 import { Link } from "@tanstack/react-router";
+import { PriceCalculator } from "@/components/PriceCalculator";
 
 const searchSchema = z.object({
   tab: fallback(z.enum(["remont", "peretyazhka"]), "remont").default("remont"),
