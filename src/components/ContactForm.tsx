@@ -141,7 +141,7 @@ export function ContactForm({ source }: { source: string }) {
     if (result.data.website) return; // honeypot trip
     const { website, ...payload } = result.data;
     void website;
-    console.log("[DRAGO form]", { source, ...payload });
+    console.log("[DRAGO form]", { source, ...payload, photos: photos.map((p) => p.file.name) });
     toast.success("Заявка отправлена!", {
       description: "Мастер свяжется в течение часа.",
     });
