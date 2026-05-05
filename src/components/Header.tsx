@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
-import { Phone, Menu, X } from "lucide-react";
+import { Phone, Menu, X, Send, MessageCircle } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
 
 const navLinks = [
