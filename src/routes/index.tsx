@@ -94,7 +94,7 @@ function Index() {
               <Home className="w-16 h-16 text-accent mb-8 group-hover:scale-110 transition-transform origin-left" strokeWidth={1.5} />
               <div className="text-2xl md:text-3xl font-bold mb-2">Я — ЧАСТНОЕ ЛИЦО</div>
               <p className="text-muted-foreground mb-8 max-w-sm">
-                Ремонт и перетяжка для дома. Заберём из квартиры, вернём как новое.
+                {nbsp("Ремонт и перетяжка для дома. Заберём из квартиры, вернём как новое.")}
               </p>
               <div className="flex items-center gap-2 text-accent font-bold uppercase text-sm tracking-wider">
                 Услуги для дома
