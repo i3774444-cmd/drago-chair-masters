@@ -18,6 +18,7 @@ export function Header() {
           <Link to="/remont" className="hover:text-accent transition-colors" activeProps={{ className: "text-accent" }}>Ремонт</Link>
           <Link to="/ceny" className="hover:text-accent transition-colors" activeProps={{ className: "text-accent" }}>Цены</Link>
           <Link to="/kejsy" className="hover:text-accent transition-colors" activeProps={{ className: "text-accent" }}>Кейсы</Link>
+          <Link to="/blog" className="hover:text-accent transition-colors" activeProps={{ className: "text-accent" }}>Блог</Link>
           <Link to="/kontakty" className="hover:text-accent transition-colors" activeProps={{ className: "text-accent" }}>Контакты</Link>
         </nav>
 
