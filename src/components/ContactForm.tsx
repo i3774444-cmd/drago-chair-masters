@@ -106,6 +106,8 @@ export function ContactForm({ source }: { source: string }) {
         if (!errs[k]) errs[k] = issue.message;
       }
       setErrors(errs);
+      const first = Object.values(errs)[0];
+      toast.error("Проверьте форму", { description: first ?? "Не все поля заполнены корректно." });
       return;
     }
     if (result.data.website) return; // honeypot trip
