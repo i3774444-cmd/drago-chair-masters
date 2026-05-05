@@ -153,7 +153,7 @@ function Index() {
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Перетащите ползунок</h2>
             </div>
             <p className="text-muted-foreground max-w-xl lg:text-right lg:ml-auto">
-              Так выглядит типичное офисное кресло до и после нашей работы. Каркас тот же — обивка, поролон и механика новые.
+              {nbsp("Так выглядит типичное офисное кресло до и после нашей работы. Каркас тот же — обивка, поролон и механика новые.")}
             </p>
           </div>
           <BeforeAfter />
