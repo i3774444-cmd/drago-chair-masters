@@ -168,6 +168,8 @@ function Page() {
         </div>
         <ContactForm source="peretyazhka" />
       </section>
+
+      <Faq items={SERVICE_FAQ} />
     </PageShell>
   );
 }
