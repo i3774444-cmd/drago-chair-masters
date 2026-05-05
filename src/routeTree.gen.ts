@@ -9,8 +9,38 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RemontRouteImport } from './routes/remont'
+import { Route as PeretyazhkaRouteImport } from './routes/peretyazhka'
+import { Route as KontaktyRouteImport } from './routes/kontakty'
+import { Route as KejsyRouteImport } from './routes/kejsy'
+import { Route as CenyRouteImport } from './routes/ceny'
 import { Route as IndexRouteImport } from './routes/index'
 
+const RemontRoute = RemontRouteImport.update({
+  id: '/remont',
+  path: '/remont',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PeretyazhkaRoute = PeretyazhkaRouteImport.update({
+  id: '/peretyazhka',
+  path: '/peretyazhka',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktyRoute = KontaktyRouteImport.update({
+  id: '/kontakty',
+  path: '/kontakty',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KejsyRoute = KejsyRouteImport.update({
+  id: '/kejsy',
+  path: '/kejsy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CenyRoute = CenyRouteImport.update({
+  id: '/ceny',
+  path: '/ceny',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +49,90 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/ceny': typeof CenyRoute
+  '/kejsy': typeof KejsyRoute
+  '/kontakty': typeof KontaktyRoute
+  '/peretyazhka': typeof PeretyazhkaRoute
+  '/remont': typeof RemontRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/ceny': typeof CenyRoute
+  '/kejsy': typeof KejsyRoute
+  '/kontakty': typeof KontaktyRoute
+  '/peretyazhka': typeof PeretyazhkaRoute
+  '/remont': typeof RemontRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/ceny': typeof CenyRoute
+  '/kejsy': typeof KejsyRoute
+  '/kontakty': typeof KontaktyRoute
+  '/peretyazhka': typeof PeretyazhkaRoute
+  '/remont': typeof RemontRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/ceny' | '/kejsy' | '/kontakty' | '/peretyazhka' | '/remont'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/ceny' | '/kejsy' | '/kontakty' | '/peretyazhka' | '/remont'
+  id:
+    | '__root__'
+    | '/'
+    | '/ceny'
+    | '/kejsy'
+    | '/kontakty'
+    | '/peretyazhka'
+    | '/remont'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CenyRoute: typeof CenyRoute
+  KejsyRoute: typeof KejsyRoute
+  KontaktyRoute: typeof KontaktyRoute
+  PeretyazhkaRoute: typeof PeretyazhkaRoute
+  RemontRoute: typeof RemontRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/remont': {
+      id: '/remont'
+      path: '/remont'
+      fullPath: '/remont'
+      preLoaderRoute: typeof RemontRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/peretyazhka': {
+      id: '/peretyazhka'
+      path: '/peretyazhka'
+      fullPath: '/peretyazhka'
+      preLoaderRoute: typeof PeretyazhkaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakty': {
+      id: '/kontakty'
+      path: '/kontakty'
+      fullPath: '/kontakty'
+      preLoaderRoute: typeof KontaktyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kejsy': {
+      id: '/kejsy'
+      path: '/kejsy'
+      fullPath: '/kejsy'
+      preLoaderRoute: typeof KejsyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ceny': {
+      id: '/ceny'
+      path: '/ceny'
+      fullPath: '/ceny'
+      preLoaderRoute: typeof CenyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +145,11 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CenyRoute: CenyRoute,
+  KejsyRoute: KejsyRoute,
+  KontaktyRoute: KontaktyRoute,
+  PeretyazhkaRoute: PeretyazhkaRoute,
+  RemontRoute: RemontRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
