@@ -7,6 +7,7 @@ import {
 import { PageShell } from "@/components/PageShell";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { ContactForm } from "@/components/ContactForm";
+import { CountUp } from "@/components/CountUp";
 
 const breakdowns = [
   { icon: Cog, name: "Замена газлифта", desc: "Кресло перестало держать высоту" },
