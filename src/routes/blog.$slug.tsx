@@ -1,10 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PageShell } from "@/components/PageShell";
-import { getPost, getRelated, POSTS } from "@/data/posts";
+import { getPost, getRelated, POSTS, type BlogPost } from "@/data/posts";
 import { Calendar, Clock, ChevronRight, ArrowLeft, ArrowRight } from "lucide-react";
 
 export const Route = createFileRoute("/blog/$slug")({
-  loader: ({ params }) => {
+  loader: ({ params }): { post: BlogPost; related: BlogPost[] } => {
     const post = getPost(params.slug);
     if (!post) throw notFound();
     const related = getRelated(params.slug);

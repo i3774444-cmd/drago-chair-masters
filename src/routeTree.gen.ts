@@ -14,7 +14,9 @@ import { Route as PeretyazhkaRouteImport } from './routes/peretyazhka'
 import { Route as KontaktyRouteImport } from './routes/kontakty'
 import { Route as KejsyRouteImport } from './routes/kejsy'
 import { Route as CenyRouteImport } from './routes/ceny'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogSlugRouteImport } from './routes/blog.$slug'
 
 const RemontRoute = RemontRouteImport.update({
   id: '/remont',
@@ -41,54 +43,89 @@ const CenyRoute = CenyRouteImport.update({
   path: '/ceny',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => BlogRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRouteWithChildren
   '/ceny': typeof CenyRoute
   '/kejsy': typeof KejsyRoute
   '/kontakty': typeof KontaktyRoute
   '/peretyazhka': typeof PeretyazhkaRoute
   '/remont': typeof RemontRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRouteWithChildren
   '/ceny': typeof CenyRoute
   '/kejsy': typeof KejsyRoute
   '/kontakty': typeof KontaktyRoute
   '/peretyazhka': typeof PeretyazhkaRoute
   '/remont': typeof RemontRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog': typeof BlogRouteWithChildren
   '/ceny': typeof CenyRoute
   '/kejsy': typeof KejsyRoute
   '/kontakty': typeof KontaktyRoute
   '/peretyazhka': typeof PeretyazhkaRoute
   '/remont': typeof RemontRoute
+  '/blog/$slug': typeof BlogSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ceny' | '/kejsy' | '/kontakty' | '/peretyazhka' | '/remont'
-  fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ceny' | '/kejsy' | '/kontakty' | '/peretyazhka' | '/remont'
-  id:
-    | '__root__'
+  fullPaths:
     | '/'
+    | '/blog'
     | '/ceny'
     | '/kejsy'
     | '/kontakty'
     | '/peretyazhka'
     | '/remont'
+    | '/blog/$slug'
+  fileRoutesByTo: FileRoutesByTo
+  to:
+    | '/'
+    | '/blog'
+    | '/ceny'
+    | '/kejsy'
+    | '/kontakty'
+    | '/peretyazhka'
+    | '/remont'
+    | '/blog/$slug'
+  id:
+    | '__root__'
+    | '/'
+    | '/blog'
+    | '/ceny'
+    | '/kejsy'
+    | '/kontakty'
+    | '/peretyazhka'
+    | '/remont'
+    | '/blog/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogRoute: typeof BlogRouteWithChildren
   CenyRoute: typeof CenyRoute
   KejsyRoute: typeof KejsyRoute
   KontaktyRoute: typeof KontaktyRoute
@@ -133,6 +170,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CenyRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -140,11 +184,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
+      parentRoute: typeof BlogRoute
+    }
   }
 }
 
+interface BlogRouteChildren {
+  BlogSlugRoute: typeof BlogSlugRoute
+}
+
+const BlogRouteChildren: BlogRouteChildren = {
+  BlogSlugRoute: BlogSlugRoute,
+}
+
+const BlogRouteWithChildren = BlogRoute._addFileChildren(BlogRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogRoute: BlogRouteWithChildren,
   CenyRoute: CenyRoute,
   KejsyRoute: KejsyRoute,
   KontaktyRoute: KontaktyRoute,
