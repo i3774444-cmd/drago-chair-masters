@@ -32,7 +32,19 @@ export function BeforeAfter() {
   return (
     <div
       ref={ref}
-      className="relative w-full aspect-[16/10] select-none overflow-hidden border-2 border-border bg-surface cursor-ew-resize touch-none"
+      role="slider"
+      aria-label="Сравнение До и После"
+      aria-valuemin={0}
+      aria-valuemax={100}
+      aria-valuenow={Math.round(pos)}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowLeft") setPos((p) => Math.max(0, p - 5));
+        if (e.key === "ArrowRight") setPos((p) => Math.min(100, p + 5));
+        if (e.key === "Home") setPos(0);
+        if (e.key === "End") setPos(100);
+      }}
+      className="relative w-full aspect-[16/10] select-none overflow-hidden border-2 border-border bg-surface cursor-ew-resize touch-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent"
       onPointerDown={(e) => {
         dragging.current = true;
         (e.target as HTMLElement).setPointerCapture?.(e.pointerId);

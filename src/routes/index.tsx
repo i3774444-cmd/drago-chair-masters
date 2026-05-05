@@ -7,6 +7,7 @@ import {
 import { PageShell } from "@/components/PageShell";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { ContactForm } from "@/components/ContactForm";
+import { CountUp } from "@/components/CountUp";
 
 const breakdowns = [
   { icon: Cog, name: "Замена газлифта", desc: "Кресло перестало держать высоту" },
@@ -37,11 +38,11 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const stats = [
-  { value: "100+", label: "кресел перетянуто" },
-  { value: "200+", label: "отремонтировано" },
-  { value: "50%", label: "клиентов по рекомендации" },
-  { value: "2013", label: "год основания" },
+const stats: { value: number; suffix: string; label: string }[] = [
+  { value: 100, suffix: "+", label: "кресел перетянуто" },
+  { value: 200, suffix: "+", label: "отремонтировано" },
+  { value: 50, suffix: "%", label: "клиентов по рекомендации" },
+  { value: 2013, suffix: "", label: "год основания" },
 ];
 
 const clients = ["БелАЗ", "Белпочта", "МТС", "Белтелеком", "Белшина"];
@@ -110,7 +111,9 @@ function Index() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {stats.map((s) => (
               <div key={s.label} className="bg-background p-6 lg:p-8">
-                <div className="font-mono text-4xl lg:text-6xl font-bold text-accent">{s.value}</div>
+                <div className="font-mono text-4xl lg:text-6xl font-bold text-accent">
+                  <CountUp to={s.value} suffix={s.suffix} />
+                </div>
                 <div className="text-sm text-muted-foreground mt-3 uppercase tracking-wider">{s.label}</div>
               </div>
             ))}
