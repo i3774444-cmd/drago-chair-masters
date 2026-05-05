@@ -92,8 +92,10 @@ export function ContactForm({ source }: { source: string }) {
   const [values, setValues] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Errors>({});
   const [done, setDone] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [photos, setPhotos] = useState<{ file: File; url: string }[]>([]);
   const fileRef = useRef<HTMLInputElement>(null);
+  const submit = useServerFn(submitLead);
 
   const onPhotos = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files ?? []);
