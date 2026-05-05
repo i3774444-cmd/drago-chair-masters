@@ -9,6 +9,7 @@ import { BeforeAfter } from "@/components/BeforeAfter";
 import { ContactForm } from "@/components/ContactForm";
 import { CountUp } from "@/components/CountUp";
 import { nbsp } from "@/lib/nbsp";
+import { ReviewsCarousel } from "@/components/ReviewsCarousel";
 
 const breakdowns = [
   { icon: Cog, name: "Замена газлифта", desc: "Кресло перестало держать высоту" },
