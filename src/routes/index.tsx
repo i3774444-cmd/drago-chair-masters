@@ -111,7 +111,9 @@ function Index() {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-border">
             {stats.map((s) => (
               <div key={s.label} className="bg-background p-6 lg:p-8">
-                <div className="font-mono text-4xl lg:text-6xl font-bold text-accent">{s.value}</div>
+                <div className="font-mono text-4xl lg:text-6xl font-bold text-accent">
+                  <CountUp to={s.value} suffix={s.suffix} />
+                </div>
                 <div className="text-sm text-muted-foreground mt-3 uppercase tracking-wider">{s.label}</div>
               </div>
             ))}
