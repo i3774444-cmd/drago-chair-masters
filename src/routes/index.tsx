@@ -129,7 +129,7 @@ function Index() {
             <Scissors className="w-10 h-10 text-accent mb-4" />
             <h3 className="text-2xl font-bold mb-3">Перетяжка</h3>
             <p className="text-muted-foreground mb-6">
-              Меняем обивку: экокожа, ткань, сетка. Подбираем материал под нагрузку и интерьер. Срок — 2–5 дней.
+              {nbsp("Меняем обивку: экокожа, ткань, сетка. Подбираем материал под нагрузку и интерьер. Срок — 2–5 дней.")}
             </p>
             <Link to="/peretyazhka" className="btn-ghost">Подробнее</Link>
           </div>
@@ -137,7 +137,7 @@ function Index() {
             <Wrench className="w-10 h-10 text-accent mb-4" />
             <h3 className="text-2xl font-bold mb-3">Ремонт механики</h3>
             <p className="text-muted-foreground mb-6">
-              Газлифт, крестовина, ролики, пиастра, качание. Восстанавливаем то, что в магазине считают «одноразовым».
+              {nbsp("Газлифт, крестовина, ролики, пиастра, качание. Восстанавливаем то, что в магазине считают «одноразовым».")}
             </p>
             <Link to="/remont" className="btn-ghost">Подробнее</Link>
           </div>
