@@ -30,7 +30,7 @@ function BlogIndex() {
           {POSTS.map((p) => (
             <article
               key={p.slug}
-              className="group bg-surface border-2 border-border hover:border-accent transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_oklch(0.7_0.18_40_/_0.5)] flex flex-col"
+              className="group bg-surface border-2 border-border hover:border-accent transition-all duration-200 hover:shadow-[0_20px_50px_-20px_oklch(0.7_0.18_40_/_0.5)] flex flex-col"
             >
               {/* Cover placeholder */}
               <div className="relative aspect-[16/10] bg-[oklch(0.28_0.04_40)] overflow-hidden border-b-2 border-border">

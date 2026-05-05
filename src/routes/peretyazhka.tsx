@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHeading } from "@/components/PageShell";
 import { ContactForm } from "@/components/ContactForm";
 import { Faq, SERVICE_FAQ } from "@/components/Faq";
-import { Shield, Star, Sparkles, Check, Clock, Wand2 } from "lucide-react";
+import { Shield, Star, Sparkles, Check, Clock } from "lucide-react";
+import { MaterialQuiz } from "@/components/MaterialQuiz";
 
 const serviceLd = {
   "@context": "https://schema.org",
@@ -81,7 +82,7 @@ function Page() {
           {materials.map((m) => (
             <article
               key={m.name}
-              className="group relative bg-surface border-2 border-border p-6 lg:p-8 transition-all duration-200 hover:border-accent hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_oklch(0.7_0.18_40_/_0.5)]"
+              className="group relative bg-surface border-2 border-border p-6 lg:p-8 transition-all duration-200 hover:border-accent hover:shadow-[0_20px_50px_-20px_oklch(0.7_0.18_40_/_0.5)]"
             >
               <div className="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-wider text-accent border border-accent px-2 py-0.5">
                 {m.badge}
@@ -114,18 +115,9 @@ function Page() {
           ))}
         </div>
 
-        {/* QUIZ STUB */}
+        {/* QUIZ */}
         <div className="mt-10 flex justify-center">
-          <button
-            type="button"
-            disabled
-            className="inline-flex items-center gap-3 border-2 border-dashed border-accent/60 text-accent px-6 py-4 font-bold uppercase tracking-wider text-sm cursor-not-allowed opacity-90 hover:opacity-100 transition-opacity"
-            title="Скоро запустим"
-          >
-            <Wand2 className="w-5 h-5" />
-            Подобрать материал
-            <span className="font-mono text-[10px] bg-accent text-accent-foreground px-2 py-0.5">Скоро: онлайн-подбор</span>
-          </button>
+          <MaterialQuiz />
         </div>
       </section>
 
