@@ -107,12 +107,12 @@ function PostPage() {
         {/* Body */}
         <section className="mx-auto max-w-3xl px-4 lg:px-8 py-12 lg:py-16">
           <div className="space-y-6 text-base lg:text-lg leading-relaxed">
-            {post.body.map((block, i) => {
+            {post.body.map((block: BlogPost["body"][number], i: number) => {
               if (block.type === "h2") return <h2 key={i} className="text-2xl md:text-3xl font-bold tracking-tight mt-10 mb-2">{block.text}</h2>;
               if (block.type === "h3") return <h3 key={i} className="text-xl md:text-2xl font-bold tracking-tight mt-8 mb-2">{block.text}</h3>;
               if (block.type === "ul") return (
                 <ul key={i} className="space-y-2 pl-0">
-                  {block.items?.map((it, j) => (
+                  {block.items?.map((it: string, j: number) => (
                     <li key={j} className="flex gap-3 border-l-2 border-accent pl-4 text-muted-foreground">
                       <span>{it}</span>
                     </li>
@@ -140,7 +140,7 @@ function PostPage() {
               <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-4">// Читайте также</div>
               <h2 className="text-2xl md:text-3xl font-bold mb-8">Похожие статьи</h2>
               <div className="grid sm:grid-cols-2 gap-4">
-                {related.map((p) => (
+                {related.map((p: BlogPost) => (
                   <Link
                     key={p.slug}
                     to="/blog/$slug"
