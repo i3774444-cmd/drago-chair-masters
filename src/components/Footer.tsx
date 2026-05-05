@@ -56,7 +56,10 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="mx-auto max-w-7xl px-4 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground font-mono">
           <span>© 2013–2026 DRAGO</span>
-          <span>УНП 191234567 · ИП Драгун А.В.</span>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy" className="hover:text-accent transition-colors">Политика конфиденциальности</Link>
+            <span>УНП 191234567</span>
+          </div>
         </div>
       </div>
     </footer>
