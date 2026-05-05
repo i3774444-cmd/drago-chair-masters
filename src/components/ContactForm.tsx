@@ -349,8 +349,8 @@ export function ContactForm({ source }: { source: string }) {
         </div>
       </div>
 
-      <button type="submit" className="btn-accent w-full text-base py-4">
-        <Send className="w-4 h-4" /> Отправить заявку
+      <button type="submit" disabled={submitting} className="btn-accent w-full text-base py-4 disabled:opacity-60 disabled:cursor-not-allowed">
+        {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Отправка…</> : <><Send className="w-4 h-4" /> Отправить заявку</>}
       </button>
       <p className="text-xs text-muted-foreground text-center">
         Нажимая кнопку, вы соглашаетесь с{" "}
