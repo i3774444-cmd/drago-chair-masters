@@ -81,7 +81,7 @@ function Page() {
           {materials.map((m) => (
             <article
               key={m.name}
-              className="group relative bg-surface border-2 border-border p-6 lg:p-8 transition-all duration-200 hover:border-accent hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_oklch(0.7_0.18_40_/_0.5)]"
+              className="group relative bg-surface border-2 border-border p-6 lg:p-8 transition-all duration-200 hover:border-accent hover:shadow-[0_20px_50px_-20px_oklch(0.7_0.18_40_/_0.5)]"
             >
               <div className="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-wider text-accent border border-accent px-2 py-0.5">
                 {m.badge}

@@ -115,7 +115,7 @@ function Page() {
               key={c.id}
               type="button"
               onClick={() => setOpen(c)}
-              className="group text-left bg-surface border-2 border-border hover:border-accent transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_20px_50px_-20px_oklch(0.7_0.18_40_/_0.5)] overflow-hidden"
+              className="group text-left bg-surface border-2 border-border hover:border-accent transition-all duration-200 hover:shadow-[0_20px_50px_-20px_oklch(0.7_0.18_40_/_0.5)] overflow-hidden"
             >
               <div className="grid grid-cols-2 gap-px bg-border">
                 <Tile tone="cool" label="ДО" />

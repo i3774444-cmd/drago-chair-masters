@@ -145,7 +145,7 @@ function PostPage() {
                     key={p.slug}
                     to="/blog/$slug"
                     params={{ slug: p.slug }}
-                    className="group bg-background border border-border p-6 hover:border-accent hover:-translate-y-0.5 transition-all"
+                    className="group bg-background border border-border p-6 hover:border-accent transition-all"
                   >
                     <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-accent mb-2">{p.tag} · {p.dateLabel}</div>
                     <h3 className="font-bold text-lg group-hover:text-accent transition-colors">{p.title}</h3>
