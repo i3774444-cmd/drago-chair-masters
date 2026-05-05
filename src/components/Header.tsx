@@ -55,12 +55,21 @@ export function Header() {
         <div className="flex items-center gap-2 sm:gap-3">
           <a
             href="tel:+375291234567"
-            className="hidden lg:flex items-center gap-2 font-mono text-sm hover:text-accent transition-colors whitespace-nowrap"
+            className="hidden md:flex items-center gap-2 font-mono text-sm font-bold hover:text-accent transition-colors whitespace-nowrap"
             aria-label="Позвонить +375 29 123-45-67"
           >
-            <Phone className="w-4 h-4" aria-hidden="true" />
-            +375&nbsp;29&nbsp;123-45-67
+            <Phone className="w-4 h-4 text-accent" aria-hidden="true" />
+            <span className="hidden lg:inline">+375&nbsp;29&nbsp;123-45-67</span>
+            <span className="lg:hidden">Звонок</span>
           </a>
+          <div className="hidden md:flex items-center gap-1">
+            <a href="https://wa.me/375291234567" target="_blank" rel="noreferrer" aria-label="WhatsApp" className="w-9 h-9 flex items-center justify-center border border-border hover:border-accent hover:text-accent transition-colors">
+              <MessageCircle className="w-4 h-4" aria-hidden="true" />
+            </a>
+            <a href="https://t.me/drago_minsk" target="_blank" rel="noreferrer" aria-label="Telegram" className="w-9 h-9 flex items-center justify-center border border-border hover:border-accent hover:text-accent transition-colors">
+              <Send className="w-4 h-4" aria-hidden="true" />
+            </a>
+          </div>
           <a
             href="/kontakty#form"
             className="hidden xl:inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground font-bold px-3 py-2 uppercase tracking-wider text-xs border-2 border-accent hover:brightness-110 transition-all whitespace-nowrap"
