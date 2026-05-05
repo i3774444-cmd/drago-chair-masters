@@ -87,8 +87,8 @@ export function Header() {
           role="dialog"
           aria-modal="true"
           aria-label="Меню"
-          className="fixed inset-0 z-[60] overflow-y-auto bg-background"
-          style={{ backgroundColor: "var(--color-background)" }}
+          className="fixed inset-0 z-[60] overflow-y-auto"
+          style={{ backgroundColor: "oklch(0.21 0 0)" }}
         >
           <div className="flex items-center justify-between h-16 px-4 border-b border-border">
             <span className="font-display font-bold text-xl">Меню</span>
