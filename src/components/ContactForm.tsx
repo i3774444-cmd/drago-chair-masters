@@ -1,8 +1,23 @@
 import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
-import { Send, CheckCircle2, Building2, User, ImagePlus, X } from "lucide-react";
+import { Send, CheckCircle2, Building2, User, ImagePlus, X, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { submitLead } from "@/server/leads.functions";
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onerror = () => reject(r.error);
+    r.onload = () => {
+      const s = String(r.result ?? "");
+      const i = s.indexOf("base64,");
+      resolve(i >= 0 ? s.slice(i + 7) : s);
+    };
+    r.readAsDataURL(file);
+  });
+}
 
 // +375 (XX) XXX-XX-XX
 const PHONE_RE = /^\+375\s?\(?\d{2}\)?\s?\d{3}-?\d{2}-?\d{2}$/;
