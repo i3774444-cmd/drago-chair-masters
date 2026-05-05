@@ -38,12 +38,12 @@ export function Header() {
           <span className="font-display font-bold text-xl tracking-tight">DRAGO</span>
         </Link>
 
-        <nav className="hidden md:flex items-center gap-6 text-sm font-medium" aria-label="Главная навигация">
+        <nav className="hidden md:flex items-center gap-4 lg:gap-6 text-sm font-medium" aria-label="Главная навигация">
           {navLinks.map((l) => (
             <Link
               key={l.to}
               to={l.to}
-              className="hover:text-accent transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+              className="hover:text-accent transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2 whitespace-nowrap"
               activeProps={{ className: "text-accent" }}
             >
               {l.label}
@@ -54,13 +54,13 @@ export function Header() {
         <div className="flex items-center gap-2 sm:gap-3">
           <a
             href="tel:+375291234567"
-            className="hidden sm:flex items-center gap-2 font-mono text-sm hover:text-accent transition-colors"
+            className="hidden lg:flex items-center gap-2 font-mono text-sm hover:text-accent transition-colors whitespace-nowrap"
             aria-label="Позвонить +375 29 123-45-67"
           >
             <Phone className="w-4 h-4" aria-hidden="true" />
-            +375 29 123-45-67
+            +375&nbsp;29&nbsp;123-45-67
           </a>
-          <a href="/kontakty#form" className="btn-accent text-xs px-3 py-2 hidden lg:inline-flex">Заказать звонок</a>
+          <a href="/kontakty#form" className="btn-accent text-xs px-3 py-2 hidden xl:inline-flex">Заказать&nbsp;звонок</a>
           <ThemeToggle />
           <button
             type="button"

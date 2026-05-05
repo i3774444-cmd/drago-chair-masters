@@ -8,21 +8,22 @@ import { PageShell } from "@/components/PageShell";
 import { BeforeAfter } from "@/components/BeforeAfter";
 import { ContactForm } from "@/components/ContactForm";
 import { CountUp } from "@/components/CountUp";
+import { nbsp } from "@/lib/nbsp";
 
 const breakdowns = [
   { icon: Cog, name: "Замена газлифта", desc: "Кресло перестало держать высоту" },
-  { icon: Disc3, name: "Замена крестовины", desc: "Треснула или скрипит при нагрузке" },
+  { icon: Disc3, name: "Замена крестовины", desc: "Треснула или скрипит при\u00A0нагрузке" },
   { icon: RotateCw, name: "Ремонт механизма качания", desc: "Перманент-контакт, топ-ган, мультиблок" },
-  { icon: Hand, name: "Замена подлокотников", desc: "2D / 3D / 4D, накладки и крепления" },
+  { icon: Hand, name: "Замена подлокотников", desc: "2D / 3D / 4D, накладки и\u00A0крепления" },
   { icon: Shirt, name: "Перетяжка обивки", desc: "Экокожа, ткань, сетка, натуральная кожа" },
-  { icon: CircleDot, name: "Замена роликов", desc: "Полиуретан — не царапает паркет" },
+  { icon: CircleDot, name: "Замена роликов", desc: "Полиуретан\u00A0— не\u00A0царапает паркет" },
 ];
 
 const steps = [
-  { icon: ClipboardList, title: "Оставляете заявку", desc: "Telegram, телефон или форма на сайте — как удобнее" },
-  { icon: Search, title: "Бесплатная диагностика", desc: "По фото за 15 минут или с выездом мастера" },
-  { icon: Truck, title: "Забираем кресло", desc: "Мастер приезжает к вам или вывозим в цех" },
-  { icon: CheckCircle2, title: "Готово за 1–2 дня", desc: "Возвращаем кресло с гарантией до 12 месяцев" },
+  { icon: ClipboardList, title: "Оставляете заявку", desc: "Telegram, телефон или\u00A0форма на\u00A0сайте\u00A0— как удобнее" },
+  { icon: Search, title: "Бесплатная диагностика", desc: "По\u00A0фото за\u00A015\u00A0минут или с\u00A0выездом мастера" },
+  { icon: Truck, title: "Забираем кресло", desc: "Мастер приезжает к\u00A0вам или вывозим в\u00A0цех" },
+  { icon: CheckCircle2, title: "Готово за\u00A01–2\u00A0дня", desc: "Возвращаем кресло с\u00A0гарантией до\u00A012\u00A0месяцев" },
 ];
 
 export const Route = createFileRoute("/")({
@@ -62,7 +63,7 @@ function Index() {
             <span className="text-accent">а не выбрасываем</span> их.
           </h1>
           <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl">
-            Перетяжка и ремонт офисных и компьютерных кресел. Честно говорим, что можно починить, а что — нет.
+            Перетяжка и&nbsp;ремонт офисных и&nbsp;компьютерных кресел. Честно говорим, что можно починить, а&nbsp;что&nbsp;— нет.
           </p>
         </div>
 
@@ -77,7 +78,7 @@ function Index() {
               <Building2 className="w-16 h-16 text-accent mb-8 group-hover:scale-110 transition-transform origin-left" strokeWidth={1.5} />
               <div className="text-2xl md:text-3xl font-bold mb-2">Я — БИЗНЕС</div>
               <p className="text-muted-foreground mb-8 max-w-sm">
-                Ремонт и перетяжка для компаний. Выезжаем, считаем, договор, отсрочка платежа.
+                {nbsp("Ремонт и перетяжка для компаний. Выезжаем, считаем, договор, отсрочка платежа.")}
               </p>
               <div className="flex items-center gap-2 text-accent font-bold uppercase text-sm tracking-wider">
                 Услуги для компаний
@@ -93,7 +94,7 @@ function Index() {
               <Home className="w-16 h-16 text-accent mb-8 group-hover:scale-110 transition-transform origin-left" strokeWidth={1.5} />
               <div className="text-2xl md:text-3xl font-bold mb-2">Я — ЧАСТНОЕ ЛИЦО</div>
               <p className="text-muted-foreground mb-8 max-w-sm">
-                Ремонт и перетяжка для дома. Заберём из квартиры, вернём как новое.
+                {nbsp("Ремонт и перетяжка для дома. Заберём из квартиры, вернём как новое.")}
               </p>
               <div className="flex items-center gap-2 text-accent font-bold uppercase text-sm tracking-wider">
                 Услуги для дома
@@ -128,7 +129,7 @@ function Index() {
             <Scissors className="w-10 h-10 text-accent mb-4" />
             <h3 className="text-2xl font-bold mb-3">Перетяжка</h3>
             <p className="text-muted-foreground mb-6">
-              Меняем обивку: экокожа, ткань, сетка. Подбираем материал под нагрузку и интерьер. Срок — 2–5 дней.
+              {nbsp("Меняем обивку: экокожа, ткань, сетка. Подбираем материал под нагрузку и интерьер. Срок — 2–5 дней.")}
             </p>
             <Link to="/peretyazhka" className="btn-ghost">Подробнее</Link>
           </div>
@@ -136,7 +137,7 @@ function Index() {
             <Wrench className="w-10 h-10 text-accent mb-4" />
             <h3 className="text-2xl font-bold mb-3">Ремонт механики</h3>
             <p className="text-muted-foreground mb-6">
-              Газлифт, крестовина, ролики, пиастра, качание. Восстанавливаем то, что в магазине считают «одноразовым».
+              {nbsp("Газлифт, крестовина, ролики, пиастра, качание. Восстанавливаем то, что в магазине считают «одноразовым».")}
             </p>
             <Link to="/remont" className="btn-ghost">Подробнее</Link>
           </div>
@@ -152,7 +153,7 @@ function Index() {
               <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Перетащите ползунок</h2>
             </div>
             <p className="text-muted-foreground max-w-xl lg:text-right lg:ml-auto">
-              Так выглядит типичное офисное кресло до и после нашей работы. Каркас тот же — обивка, поролон и механика новые.
+              {nbsp("Так выглядит типичное офисное кресло до и после нашей работы. Каркас тот же — обивка, поролон и механика новые.")}
             </p>
           </div>
           <BeforeAfter />
@@ -179,11 +180,11 @@ function Index() {
             {breakdowns.map((b) => (
               <div
                 key={b.name}
-                className="group bg-background p-6 lg:p-8 transition-all duration-200 hover:bg-surface-elevated hover:scale-[1.02] hover:shadow-[0_10px_40px_-10px_oklch(0.7_0.18_40_/_0.4)] hover:z-10 relative cursor-default"
+                className="group bg-background p-6 lg:p-8 transition-all duration-200 hover:bg-surface-elevated hover:scale-[1.02] hover:shadow-[0_10px_40px_-10px_oklch(0.7_0.18_40_/_0.4)] hover:z-10 relative cursor-default motion-reduce:hover:scale-100"
               >
-                <b.icon className="w-10 h-10 text-accent mb-5 transition-transform duration-200 group-hover:scale-110 group-hover:rotate-[-6deg]" strokeWidth={1.5} />
-                <h3 className="font-bold text-lg mb-1">{b.name}</h3>
-                <p className="text-muted-foreground text-sm">{b.desc}</p>
+                <b.icon className="w-10 h-10 text-accent mb-5 transition-transform duration-200 group-hover:scale-110 group-hover:rotate-[-6deg] motion-reduce:group-hover:rotate-0 motion-reduce:group-hover:scale-100" strokeWidth={1.5} />
+                <h3 className="font-bold text-lg mb-1">{nbsp(b.name)}</h3>
+                <p className="text-muted-foreground text-sm">{nbsp(b.desc)}</p>
               </div>
             ))}
           </div>
@@ -265,7 +266,7 @@ function Index() {
               <span className="text-accent">Пришлите фото — оценим бесплатно.</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-xl">
-              Ответим за 15 минут в рабочее время. Скажем честно: ремонтировать или проще купить новое.
+              {nbsp("Ответим за 15 минут в рабочее время. Скажем честно: ремонтировать или проще купить новое.")}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
               <a href="tel:+375291234567" className="btn-accent text-base px-6 py-4">
