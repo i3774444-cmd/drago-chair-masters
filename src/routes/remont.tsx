@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHeading } from "@/components/PageShell";
 import { ContactForm } from "@/components/ContactForm";
+import { Faq, SERVICE_FAQ } from "@/components/Faq";
 import { ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/remont")({
