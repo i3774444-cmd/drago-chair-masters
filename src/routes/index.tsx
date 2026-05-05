@@ -38,11 +38,11 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const stats = [
-  { value: "100+", label: "кресел перетянуто" },
-  { value: "200+", label: "отремонтировано" },
-  { value: "50%", label: "клиентов по рекомендации" },
-  { value: "2013", label: "год основания" },
+const stats: { value: number; suffix: string; label: string }[] = [
+  { value: 100, suffix: "+", label: "кресел перетянуто" },
+  { value: 200, suffix: "+", label: "отремонтировано" },
+  { value: 50, suffix: "%", label: "клиентов по рекомендации" },
+  { value: 2013, suffix: "", label: "год основания" },
 ];
 
 const clients = ["БелАЗ", "Белпочта", "МТС", "Белтелеком", "Белшина"];
