@@ -180,11 +180,11 @@ function Index() {
             {breakdowns.map((b) => (
               <div
                 key={b.name}
-                className="group bg-background p-6 lg:p-8 transition-all duration-200 hover:bg-surface-elevated hover:scale-[1.02] hover:shadow-[0_10px_40px_-10px_oklch(0.7_0.18_40_/_0.4)] hover:z-10 relative cursor-default"
+                className="group bg-background p-6 lg:p-8 transition-all duration-200 hover:bg-surface-elevated hover:scale-[1.02] hover:shadow-[0_10px_40px_-10px_oklch(0.7_0.18_40_/_0.4)] hover:z-10 relative cursor-default motion-reduce:hover:scale-100"
               >
-                <b.icon className="w-10 h-10 text-accent mb-5 transition-transform duration-200 group-hover:scale-110 group-hover:rotate-[-6deg]" strokeWidth={1.5} />
-                <h3 className="font-bold text-lg mb-1">{b.name}</h3>
-                <p className="text-muted-foreground text-sm">{b.desc}</p>
+                <b.icon className="w-10 h-10 text-accent mb-5 transition-transform duration-200 group-hover:scale-110 group-hover:rotate-[-6deg] motion-reduce:group-hover:rotate-0 motion-reduce:group-hover:scale-100" strokeWidth={1.5} />
+                <h3 className="font-bold text-lg mb-1">{nbsp(b.name)}</h3>
+                <p className="text-muted-foreground text-sm">{nbsp(b.desc)}</p>
               </div>
             ))}
           </div>
