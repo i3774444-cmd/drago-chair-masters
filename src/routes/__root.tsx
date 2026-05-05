@@ -1,8 +1,35 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
 import { ScrollToTop } from "@/components/ScrollToTop";
+import { StickyMobileCTA } from "@/components/StickyMobileCTA";
 
 import appCss from "../styles.css?url";
+
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://drago.by/#business",
+  name: "DRAGO",
+  description: "Ремонт и перетяжка офисных и компьютерных кресел в Минске.",
+  url: "https://drago.by",
+  telephone: "+375291234567",
+  email: "hello@drago.by",
+  image: "https://drago.by/og-image.jpg",
+  priceRange: "BYN 15–320",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "ул. Притыцкого, 62, цех 4",
+    addressLocality: "Минск",
+    addressCountry: "BY",
+  },
+  geo: { "@type": "GeoCoordinates", latitude: 53.9023, longitude: 27.4489 },
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday","Tuesday","Wednesday","Thursday","Friday"], opens: "09:00", closes: "19:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: "Saturday", opens: "10:00", closes: "16:00" },
+  ],
+  sameAs: ["https://t.me/drago_minsk"],
+  aggregateRating: { "@type": "AggregateRating", ratingValue: "4.9", reviewCount: "87" },
+};
 
 function NotFoundComponent() {
   return (
