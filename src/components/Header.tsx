@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { Link } from "@tanstack/react-router";
 import { Phone, Menu, X } from "lucide-react";
 import { ThemeToggle } from "./ThemeToggle";
@@ -80,14 +81,14 @@ export function Header() {
         </div>
       </div>
 
-      {/* Mobile menu */}
-      {open && (
+      {/* Mobile menu — rendered via portal so backdrop-blur on header doesn't trap fixed positioning */}
+      {open && typeof document !== "undefined" && createPortal(
         <div
           id="mobile-menu"
           role="dialog"
           aria-modal="true"
           aria-label="Меню"
-          className="fixed inset-0 z-50 bg-background animate-in fade-in duration-150 motion-reduce:animate-none"
+          className="fixed inset-0 z-[100] overflow-y-auto bg-background"
         >
           <div className="flex items-center justify-between h-16 px-4 border-b border-border">
             <span className="font-display font-bold text-xl">Меню</span>
@@ -121,7 +122,8 @@ export function Header() {
               +375 29 123-45-67
             </a>
           </nav>
-        </div>
+        </div>,
+        document.body
       )}
     </header>
   );
