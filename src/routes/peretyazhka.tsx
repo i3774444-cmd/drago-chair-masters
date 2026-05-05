@@ -115,18 +115,9 @@ function Page() {
           ))}
         </div>
 
-        {/* QUIZ STUB */}
+        {/* QUIZ */}
         <div className="mt-10 flex justify-center">
-          <button
-            type="button"
-            disabled
-            className="inline-flex items-center gap-3 border-2 border-dashed border-accent/60 text-accent px-6 py-4 font-bold uppercase tracking-wider text-sm cursor-not-allowed opacity-90 hover:opacity-100 transition-opacity"
-            title="Скоро запустим"
-          >
-            <Wand2 className="w-5 h-5" />
-            Подобрать материал
-            <span className="font-mono text-[10px] bg-accent text-accent-foreground px-2 py-0.5">Скоро: онлайн-подбор</span>
-          </button>
+          <MaterialQuiz />
         </div>
       </section>
 
