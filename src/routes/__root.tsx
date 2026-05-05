@@ -106,6 +106,7 @@ function RootComponent() {
     <>
       <ScrollToTop />
       <Outlet />
+      <StickyMobileCTA />
       <Toaster />
     </>
   );
