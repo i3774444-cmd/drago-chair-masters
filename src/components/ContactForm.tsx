@@ -265,11 +265,48 @@ export function ContactForm({ source }: { source: string }) {
         </div>
       </div>
 
+      {/* Photo upload */}
+      <div>
+        <label className="block font-mono text-xs uppercase tracking-wider text-muted-foreground mb-2">
+          Фото кресла (до 5 шт., 5 МБ)
+        </label>
+        <div className="flex flex-wrap gap-3">
+          {photos.map((p, i) => (
+            <div key={i} className="relative w-20 h-20 border border-border overflow-hidden group">
+              <img src={p.url} alt="" className="w-full h-full object-cover" />
+              <button
+                type="button"
+                onClick={() => removePhoto(i)}
+                aria-label="Удалить фото"
+                className="absolute top-1 right-1 w-6 h-6 bg-background/80 border border-border flex items-center justify-center hover:border-destructive hover:text-destructive"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            </div>
+          ))}
+          {photos.length < 5 && (
+            <label className="w-20 h-20 border-2 border-dashed border-border hover:border-accent hover:text-accent flex flex-col items-center justify-center cursor-pointer text-muted-foreground transition-colors">
+              <ImagePlus className="w-5 h-5" />
+              <span className="text-[10px] font-mono mt-1">Добавить</span>
+              <input
+                ref={fileRef}
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={onPhotos}
+                className="sr-only"
+              />
+            </label>
+          )}
+        </div>
+      </div>
+
       <button type="submit" className="btn-accent w-full text-base py-4">
         <Send className="w-4 h-4" /> Отправить заявку
       </button>
       <p className="text-xs text-muted-foreground text-center">
-        Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
+        Нажимая кнопку, вы соглашаетесь с{" "}
+        <Link to="/privacy" className="text-accent hover:underline">политикой конфиденциальности</Link>.
       </p>
     </form>
   );
