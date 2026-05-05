@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Phone } from "lucide-react";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
   return (
@@ -25,7 +26,8 @@ export function Header() {
             <Phone className="w-4 h-4" />
             +375 29 123-45-67
           </a>
-          <a href="#callback" className="btn-accent text-xs px-3 py-2">Заказать звонок</a>
+          <a href="/kontakty#form" className="btn-accent text-xs px-3 py-2 hidden sm:inline-flex">Заказать звонок</a>
+          <ThemeToggle />
         </div>
       </div>
     </header>

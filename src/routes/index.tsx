@@ -6,6 +6,7 @@ import {
 } from "lucide-react";
 import { PageShell } from "@/components/PageShell";
 import { BeforeAfter } from "@/components/BeforeAfter";
+import { ContactForm } from "@/components/ContactForm";
 
 const breakdowns = [
   { icon: Cog, name: "Замена газлифта", desc: "Кресло перестало держать высоту" },
@@ -251,9 +252,9 @@ function Index() {
         </div>
       </section>
 
-      {/* CALLBACK CTA */}
+      {/* CALLBACK CTA + FORM */}
       <section id="callback" className="border-b border-border bg-surface">
-        <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-24 grid md:grid-cols-[1fr_auto] gap-8 items-center">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-[1.1fr_1fr] gap-10 items-start">
           <div>
             <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
               Не уверены, что чинить?<br/>
@@ -262,15 +263,16 @@ function Index() {
             <p className="text-muted-foreground mt-4 max-w-xl">
               Ответим за 15 минут в рабочее время. Скажем честно: ремонтировать или проще купить новое.
             </p>
+            <div className="flex flex-col sm:flex-row gap-3 mt-8">
+              <a href="tel:+375291234567" className="btn-accent text-base px-6 py-4">
+                <Phone className="w-5 h-5" /> +375 29 123-45-67
+              </a>
+              <a href="https://t.me/drago_minsk" target="_blank" rel="noreferrer" className="btn-ghost text-base px-6 py-4">
+                <Send className="w-4 h-4" /> Telegram
+              </a>
+            </div>
           </div>
-          <div className="flex flex-col gap-3">
-            <a href="tel:+375291234567" className="btn-accent text-base px-6 py-4">
-              <Phone className="w-5 h-5" /> +375 29 123-45-67
-            </a>
-            <a href="https://t.me/drago_minsk" target="_blank" rel="noreferrer" className="btn-ghost text-base px-6 py-4">
-              Написать в Telegram
-            </a>
-          </div>
+          <ContactForm source="home" />
         </div>
       </section>
     </PageShell>
