@@ -22,6 +22,7 @@ export function Footer() {
             <li><Link to="/remont" className="hover:text-accent transition-colors">Ремонт</Link></li>
             <li><Link to="/ceny" className="hover:text-accent transition-colors">Цены</Link></li>
             <li><Link to="/kejsy" className="hover:text-accent transition-colors">Кейсы</Link></li>
+            <li><Link to="/blog" className="hover:text-accent transition-colors">Блог</Link></li>
             <li><Link to="/kontakty" className="hover:text-accent transition-colors">Контакты</Link></li>
           </ul>
         </div>
