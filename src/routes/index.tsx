@@ -266,7 +266,7 @@ function Index() {
               <span className="text-accent">Пришлите фото — оценим бесплатно.</span>
             </h2>
             <p className="text-muted-foreground mt-4 max-w-xl">
-              Ответим за 15 минут в рабочее время. Скажем честно: ремонтировать или проще купить новое.
+              {nbsp("Ответим за 15 минут в рабочее время. Скажем честно: ремонтировать или проще купить новое.")}
             </p>
             <div className="flex flex-col sm:flex-row gap-3 mt-8">
               <a href="tel:+375291234567" className="btn-accent text-base px-6 py-4">
