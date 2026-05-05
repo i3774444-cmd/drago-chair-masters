@@ -4,6 +4,15 @@ import { ContactForm } from "@/components/ContactForm";
 import { Faq, SERVICE_FAQ } from "@/components/Faq";
 import { Shield, Star, Sparkles, Check, Clock, Wand2 } from "lucide-react";
 
+const serviceLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: "Перетяжка офисных и компьютерных кресел",
+  provider: { "@type": "LocalBusiness", name: "DRAGO", "@id": "https://drago.by/#business" },
+  areaServed: "Минск",
+  offers: { "@type": "Offer", priceCurrency: "BYN", price: "120", url: "https://drago.by/peretyazhka" },
+};
+
 export const Route = createFileRoute("/peretyazhka")({
   head: () => ({
     meta: [
@@ -12,6 +21,7 @@ export const Route = createFileRoute("/peretyazhka")({
       { property: "og:title", content: "Перетяжка кресел — DRAGO" },
       { property: "og:description", content: "Вернём креслу вид и комфорт. Подбор материала под любой бюджет." },
     ],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify(serviceLd) }],
   }),
   component: Page,
 });
