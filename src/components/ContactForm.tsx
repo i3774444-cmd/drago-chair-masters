@@ -1,7 +1,8 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
-import { Send, CheckCircle2, Building2, User } from "lucide-react";
+import { Send, CheckCircle2, Building2, User, ImagePlus, X } from "lucide-react";
 import { toast } from "sonner";
+import { Link } from "@tanstack/react-router";
 
 // +375 (XX) XXX-XX-XX
 const PHONE_RE = /^\+375\s?\(?\d{2}\)?\s?\d{3}-?\d{2}-?\d{2}$/;
@@ -76,6 +77,33 @@ export function ContactForm({ source }: { source: string }) {
   const [values, setValues] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Errors>({});
   const [done, setDone] = useState(false);
+  const [photos, setPhotos] = useState<{ file: File; url: string }[]>([]);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const onPhotos = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files ?? []);
+    const valid: { file: File; url: string }[] = [];
+    for (const f of files) {
+      if (!f.type.startsWith("image/")) {
+        toast.error("Только изображения", { description: f.name });
+        continue;
+      }
+      if (f.size > 5 * 1024 * 1024) {
+        toast.error("Файл больше 5 МБ", { description: f.name });
+        continue;
+      }
+      valid.push({ file: f, url: URL.createObjectURL(f) });
+    }
+    setPhotos((p) => [...p, ...valid].slice(0, 5));
+    if (fileRef.current) fileRef.current.value = "";
+  };
+
+  const removePhoto = (idx: number) => {
+    setPhotos((p) => {
+      URL.revokeObjectURL(p[idx].url);
+      return p.filter((_, i) => i !== idx);
+    });
+  };
 
   useEffect(() => {
     if (!done) return;
@@ -113,7 +141,7 @@ export function ContactForm({ source }: { source: string }) {
     if (result.data.website) return; // honeypot trip
     const { website, ...payload } = result.data;
     void website;
-    console.log("[DRAGO form]", { source, ...payload });
+    console.log("[DRAGO form]", { source, ...payload, photos: photos.map((p) => p.file.name) });
     toast.success("Заявка отправлена!", {
       description: "Мастер свяжется в течение часа.",
     });
@@ -237,11 +265,48 @@ export function ContactForm({ source }: { source: string }) {
         </div>
       </div>
 
+      {/* Photo upload */}
+      <div>
+        <label className="block font-mono text-xs uppercase tracking-wider text-muted-foreground mb-2">
+          Фото кресла (до 5 шт., 5 МБ)
+        </label>
+        <div className="flex flex-wrap gap-3">
+          {photos.map((p, i) => (
+            <div key={i} className="relative w-20 h-20 border border-border overflow-hidden group">
+              <img src={p.url} alt="" className="w-full h-full object-cover" />
+              <button
+                type="button"
+                onClick={() => removePhoto(i)}
+                aria-label="Удалить фото"
+                className="absolute top-1 right-1 w-6 h-6 bg-background/80 border border-border flex items-center justify-center hover:border-destructive hover:text-destructive"
+              >
+                <X className="w-3 h-3" />
+              </button>
+            </div>
+          ))}
+          {photos.length < 5 && (
+            <label className="w-20 h-20 border-2 border-dashed border-border hover:border-accent hover:text-accent flex flex-col items-center justify-center cursor-pointer text-muted-foreground transition-colors">
+              <ImagePlus className="w-5 h-5" />
+              <span className="text-[10px] font-mono mt-1">Добавить</span>
+              <input
+                ref={fileRef}
+                type="file"
+                accept="image/*"
+                multiple
+                onChange={onPhotos}
+                className="sr-only"
+              />
+            </label>
+          )}
+        </div>
+      </div>
+
       <button type="submit" className="btn-accent w-full text-base py-4">
         <Send className="w-4 h-4" /> Отправить заявку
       </button>
       <p className="text-xs text-muted-foreground text-center">
-        Нажимая кнопку, вы соглашаетесь с обработкой персональных данных.
+        Нажимая кнопку, вы соглашаетесь с{" "}
+        <Link to="/privacy" className="text-accent hover:underline">политикой конфиденциальности</Link>.
       </p>
     </form>
   );

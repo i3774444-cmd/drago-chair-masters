@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Phone, MapPin, Send } from "lucide-react";
+import { Phone, MapPin, Send, MessageCircle } from "lucide-react";
 
 export function Footer() {
   return (
@@ -39,9 +39,15 @@ export function Footer() {
               <MapPin className="w-4 h-4 text-accent mt-0.5 shrink-0" />
               г. Минск, ул. Притыцкого, 62, цех 4
             </li>
-            <li>
-              <a href="https://t.me/drago_minsk" target="_blank" rel="noreferrer" className="btn-ghost text-xs px-3 py-2 mt-2">
+            <li className="flex flex-wrap gap-2 mt-2">
+              <a href="https://t.me/drago_minsk" target="_blank" rel="noreferrer" className="btn-ghost text-xs px-3 py-2" aria-label="Telegram">
                 <Send className="w-4 h-4" /> Telegram
+              </a>
+              <a href="https://wa.me/375291234567" target="_blank" rel="noreferrer" className="btn-ghost text-xs px-3 py-2" aria-label="WhatsApp">
+                <MessageCircle className="w-4 h-4" /> WhatsApp
+              </a>
+              <a href="viber://chat?number=%2B375291234567" className="btn-ghost text-xs px-3 py-2" aria-label="Viber">
+                <MessageCircle className="w-4 h-4" /> Viber
               </a>
             </li>
           </ul>
@@ -50,7 +56,10 @@ export function Footer() {
       <div className="border-t border-border">
         <div className="mx-auto max-w-7xl px-4 lg:px-8 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-foreground font-mono">
           <span>© 2013–2026 DRAGO</span>
-          <span>УНП 191234567 · ИП Драгун А.В.</span>
+          <div className="flex items-center gap-4">
+            <Link to="/privacy" className="hover:text-accent transition-colors">Политика конфиденциальности</Link>
+            <span>УНП 191234567</span>
+          </div>
         </div>
       </div>
     </footer>

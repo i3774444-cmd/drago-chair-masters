@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Phone, Send, ArrowUp } from "lucide-react";
+import { Phone, Send, ArrowUp, MessageCircle } from "lucide-react";
 
 export function StickyMobileCTA() {
   const [showTop, setShowTop] = useState(false);
@@ -12,23 +12,39 @@ export function StickyMobileCTA() {
 
   return (
     <>
-      {/* Mobile: phone + telegram bottom bar */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 grid grid-cols-2 border-t-2 border-accent shadow-[0_-10px_30px_-10px_rgba(0,0,0,0.5)]">
+      {/* Mobile: phone + messengers bottom bar */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 grid grid-cols-4 border-t-2 border-accent shadow-[0_-10px_30px_-10px_rgba(0,0,0,0.5)]">
         <a
           href="tel:+375291234567"
-          className="bg-accent text-accent-foreground flex items-center justify-center gap-2 py-4 font-bold uppercase text-sm tracking-wider active:translate-y-px"
+          className="bg-accent text-accent-foreground flex flex-col items-center justify-center gap-0.5 py-3 font-bold uppercase text-[10px] tracking-wider active:translate-y-px"
           aria-label="Позвонить"
         >
-          <Phone className="w-5 h-5" /> Позвонить
+          <Phone className="w-5 h-5" /> Звонок
+        </a>
+        <a
+          href="https://wa.me/375291234567"
+          target="_blank"
+          rel="noreferrer"
+          className="bg-background border-l border-accent text-foreground flex flex-col items-center justify-center gap-0.5 py-3 font-bold uppercase text-[10px] tracking-wider active:translate-y-px"
+          aria-label="WhatsApp"
+        >
+          <MessageCircle className="w-5 h-5 text-accent" /> WhatsApp
         </a>
         <a
           href="https://t.me/drago_minsk"
           target="_blank"
           rel="noreferrer"
-          className="bg-background border-l-2 border-accent text-foreground flex items-center justify-center gap-2 py-4 font-bold uppercase text-sm tracking-wider active:translate-y-px"
-          aria-label="Написать в Telegram"
+          className="bg-background border-l border-accent text-foreground flex flex-col items-center justify-center gap-0.5 py-3 font-bold uppercase text-[10px] tracking-wider active:translate-y-px"
+          aria-label="Telegram"
         >
           <Send className="w-5 h-5 text-accent" /> Telegram
+        </a>
+        <a
+          href="viber://chat?number=%2B375291234567"
+          className="bg-background border-l border-accent text-foreground flex flex-col items-center justify-center gap-0.5 py-3 font-bold uppercase text-[10px] tracking-wider active:translate-y-px"
+          aria-label="Viber"
+        >
+          <MessageCircle className="w-5 h-5 text-accent" /> Viber
         </a>
       </div>
 
