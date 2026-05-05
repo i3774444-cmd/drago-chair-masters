@@ -87,7 +87,7 @@ export function Header() {
           role="dialog"
           aria-modal="true"
           aria-label="Меню"
-          className="fixed inset-0 z-50 bg-background animate-in fade-in duration-150 motion-reduce:animate-none"
+          className="fixed inset-0 z-[60] bg-background"
         >
           <div className="flex items-center justify-between h-16 px-4 border-b border-border">
             <span className="font-display font-bold text-xl">Меню</span>
