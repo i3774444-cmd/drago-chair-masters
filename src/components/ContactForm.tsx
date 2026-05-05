@@ -77,6 +77,33 @@ export function ContactForm({ source }: { source: string }) {
   const [values, setValues] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Errors>({});
   const [done, setDone] = useState(false);
+  const [photos, setPhotos] = useState<{ file: File; url: string }[]>([]);
+  const fileRef = useRef<HTMLInputElement>(null);
+
+  const onPhotos = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files ?? []);
+    const valid: { file: File; url: string }[] = [];
+    for (const f of files) {
+      if (!f.type.startsWith("image/")) {
+        toast.error("Только изображения", { description: f.name });
+        continue;
+      }
+      if (f.size > 5 * 1024 * 1024) {
+        toast.error("Файл больше 5 МБ", { description: f.name });
+        continue;
+      }
+      valid.push({ file: f, url: URL.createObjectURL(f) });
+    }
+    setPhotos((p) => [...p, ...valid].slice(0, 5));
+    if (fileRef.current) fileRef.current.value = "";
+  };
+
+  const removePhoto = (idx: number) => {
+    setPhotos((p) => {
+      URL.revokeObjectURL(p[idx].url);
+      return p.filter((_, i) => i !== idx);
+    });
+  };
 
   useEffect(() => {
     if (!done) return;
