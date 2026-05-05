@@ -1,8 +1,23 @@
 import { useState, useEffect, useRef } from "react";
 import { z } from "zod";
-import { Send, CheckCircle2, Building2, User, ImagePlus, X } from "lucide-react";
+import { Send, CheckCircle2, Building2, User, ImagePlus, X, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
+import { submitLead } from "@/server/leads.functions";
+
+function fileToBase64(file: File): Promise<string> {
+  return new Promise((resolve, reject) => {
+    const r = new FileReader();
+    r.onerror = () => reject(r.error);
+    r.onload = () => {
+      const s = String(r.result ?? "");
+      const i = s.indexOf("base64,");
+      resolve(i >= 0 ? s.slice(i + 7) : s);
+    };
+    r.readAsDataURL(file);
+  });
+}
 
 // +375 (XX) XXX-XX-XX
 const PHONE_RE = /^\+375\s?\(?\d{2}\)?\s?\d{3}-?\d{2}-?\d{2}$/;
@@ -77,8 +92,10 @@ export function ContactForm({ source }: { source: string }) {
   const [values, setValues] = useState<FormState>(initial);
   const [errors, setErrors] = useState<Errors>({});
   const [done, setDone] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
   const [photos, setPhotos] = useState<{ file: File; url: string }[]>([]);
   const fileRef = useRef<HTMLInputElement>(null);
+  const submit = useServerFn(submitLead);
 
   const onPhotos = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files ?? []);
@@ -124,8 +141,9 @@ export function ContactForm({ source }: { source: string }) {
     setErrors({});
   };
 
-  const onSubmit = (e: React.FormEvent) => {
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (submitting) return;
     const result = schema.safeParse(values);
     if (!result.success) {
       const errs: Errors = {};
@@ -139,14 +157,44 @@ export function ContactForm({ source }: { source: string }) {
       return;
     }
     if (result.data.website) return; // honeypot trip
-    const { website, ...payload } = result.data;
-    void website;
-    console.log("[DRAGO form]", { source, ...payload, photos: photos.map((p) => p.file.name) });
-    toast.success("Заявка отправлена!", {
-      description: "Мастер свяжется в течение часа.",
-    });
-    setDone(true);
-    setValues(initial);
+
+    setSubmitting(true);
+    try {
+      const photosPayload = await Promise.all(
+        photos.map(async (p) => ({
+          name: p.file.name,
+          type: p.file.type,
+          data: await fileToBase64(p.file),
+        })),
+      );
+      const res = await submit({
+        data: {
+          source,
+          clientType: result.data.clientType,
+          name: result.data.name,
+          phone: result.data.phone,
+          comment: result.data.comment ?? "",
+          company: result.data.company ?? "",
+          unn: result.data.unn ?? "",
+          website: "",
+          photos: photosPayload,
+        },
+      });
+      if (!res?.ok) {
+        toast.error("Не удалось отправить", { description: res?.error ?? "Попробуйте ещё раз." });
+        return;
+      }
+      toast.success("Заявка отправлена!", { description: "Мастер свяжется в течение часа." });
+      photos.forEach((p) => URL.revokeObjectURL(p.url));
+      setPhotos([]);
+      setDone(true);
+      setValues(initial);
+    } catch (err) {
+      console.error(err);
+      toast.error("Ошибка сети", { description: "Проверьте подключение и попробуйте снова." });
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   if (done) {
@@ -301,8 +349,8 @@ export function ContactForm({ source }: { source: string }) {
         </div>
       </div>
 
-      <button type="submit" className="btn-accent w-full text-base py-4">
-        <Send className="w-4 h-4" /> Отправить заявку
+      <button type="submit" disabled={submitting} className="btn-accent w-full text-base py-4 disabled:opacity-60 disabled:cursor-not-allowed">
+        {submitting ? <><Loader2 className="w-4 h-4 animate-spin" /> Отправка…</> : <><Send className="w-4 h-4" /> Отправить заявку</>}
       </button>
       <p className="text-xs text-muted-foreground text-center">
         Нажимая кнопку, вы соглашаетесь с{" "}
