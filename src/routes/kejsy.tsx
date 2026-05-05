@@ -66,6 +66,9 @@ function Tile({ tone, label }: { tone: Case["tone"]; label: string }) {
 
 function Page() {
   const [open, setOpen] = useState<Case | null>(null);
+  const [filter, setFilter] = useState<(typeof filters)[number]["id"]>("all");
+
+  const filtered = filter === "all" ? cases : cases.filter((c) => c.kind === filter);
 
   useEffect(() => {
     if (!open) return;
@@ -87,8 +90,27 @@ function Page() {
       />
 
       <section className="mx-auto max-w-7xl px-4 lg:px-8 py-12 lg:py-16">
+        <div className="flex items-center gap-2 mb-8 flex-wrap">
+          <span className="font-mono text-xs uppercase tracking-wider text-muted-foreground mr-2">
+            Фильтр:
+          </span>
+          {filters.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              onClick={() => setFilter(f.id)}
+              className={`px-3 py-1.5 text-sm border-2 transition-colors ${
+                filter === f.id
+                  ? "border-accent bg-accent text-accent-foreground"
+                  : "border-border hover:border-accent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
-          {cases.map((c) => (
+          {filtered.map((c) => (
             <button
               key={c.id}
               type="button"
