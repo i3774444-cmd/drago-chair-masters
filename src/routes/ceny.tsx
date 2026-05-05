@@ -164,7 +164,7 @@ function Page() {
             <Truck className="w-7 h-7 shrink-0 mt-1" strokeWidth={2} />
             <div>
               <div className="font-bold uppercase tracking-wide">Бесплатная доставка</div>
-              <p className="text-sm">Заберём кресло из дома или офиса по Минску — бесплатно.</p>
+              <p className="text-sm">Заберём кресло из дома или офиса по Минску&nbsp;— бесплатно.</p>
             </div>
           </div>
           <div className="bg-accent text-accent-foreground p-6 flex items-start gap-4">
@@ -174,6 +174,13 @@ function Page() {
               <p className="text-sm">Комплект полиуретановых роликов при заказе перетяжки.</p>
             </div>
           </div>
+        </div>
+
+        {/* Calculator */}
+        <div className="mt-16">
+          <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-4">// Прикинуть стоимость</div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6">Калькулятор за&nbsp;30&nbsp;секунд</h2>
+          <PriceCalculator />
         </div>
       </section>
     </PageShell>
