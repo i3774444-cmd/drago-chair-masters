@@ -2,7 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHeading } from "@/components/PageShell";
 import { ContactForm } from "@/components/ContactForm";
 import { Faq, SERVICE_FAQ } from "@/components/Faq";
-import { Shield, Star, Sparkles, Check, Clock, Wand2 } from "lucide-react";
+import { Shield, Star, Sparkles, Check, Clock } from "lucide-react";
+import { MaterialQuiz } from "@/components/MaterialQuiz";
 
 const serviceLd = {
   "@context": "https://schema.org",
