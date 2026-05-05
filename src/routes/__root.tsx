@@ -1,5 +1,6 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 import { Toaster } from "@/components/ui/sonner";
+import { ScrollToTop } from "@/components/ScrollToTop";
 
 import appCss from "../styles.css?url";
 
@@ -69,6 +70,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 function RootComponent() {
   return (
     <>
+      <ScrollToTop />
       <Outlet />
       <Toaster />
     </>
