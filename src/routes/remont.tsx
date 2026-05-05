@@ -7,7 +7,7 @@ import { ShieldCheck } from "lucide-react";
 export const Route = createFileRoute("/remont")({
   head: () => ({
     meta: [
-      { title: "Ремонт офисных и компьютерных кресел в Минске — DRAGO" },
+      { title: "Ремонт кресел в Минске — от 45 BYN | DRAGO" },
       { name: "description", content: "Ремонт кресел в Минске день в день. Газлифт от 45 BYN, крестовина от 35 BYN. Диагностика и выезд — бесплатно." },
       { property: "og:title", content: "Ремонт кресел — DRAGO" },
       { property: "og:description", content: "День в день или на следующий. С выездом к вам. Гарантия на все работы." },

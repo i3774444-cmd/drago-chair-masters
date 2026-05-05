@@ -8,7 +8,7 @@ import { useEffect } from "react";
 export const Route = createFileRoute("/kejsy")({
   head: () => ({
     meta: [
-      { title: "Наши работы — DRAGO Минск" },
+      { title: "Наши работы по ремонту и перетяжке кресел | DRAGO" },
       { name: "description", content: "Кейсы по ремонту и перетяжке офисных кресел: до и после, тип работы и материалы." },
       { property: "og:title", content: "Кейсы — DRAGO" },
       { property: "og:description", content: "Реальные работы: до / после." },

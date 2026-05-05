@@ -7,7 +7,7 @@ import { Shield, Star, Sparkles, Check, Clock, Wand2 } from "lucide-react";
 export const Route = createFileRoute("/peretyazhka")({
   head: () => ({
     meta: [
-      { title: "Перетяжка офисных и компьютерных кресел в Минске — DRAGO" },
+      { title: "Перетяжка кресел в Минске — от 120 BYN | DRAGO" },
       { name: "description", content: "Перетяжка кресел в Минске: экокожа от 160 BYN, ткань от 120 BYN, натуральная кожа от 250 BYN. Гарантия 12 месяцев." },
       { property: "og:title", content: "Перетяжка кресел — DRAGO" },
       { property: "og:description", content: "Вернём креслу вид и комфорт. Подбор материала под любой бюджет." },

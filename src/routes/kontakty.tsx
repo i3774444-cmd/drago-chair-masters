@@ -7,7 +7,7 @@ import { Phone, Mail, MapPin, Send, Clock, MapPinned } from "lucide-react";
 export const Route = createFileRoute("/kontakty")({
   head: () => ({
     meta: [
-      { title: "Контакты DRAGO — ремонт кресел в Минске" },
+      { title: "Контакты DRAGO — ремонт и перетяжка кресел в Минске" },
       { name: "description", content: "Минск, ул. Притыцкого, 62. Телефон, Telegram, email. Пн–Сб." },
       { property: "og:title", content: "Контакты — DRAGO" },
       { property: "og:description", content: "Адрес мастерской, телефон, Telegram." },

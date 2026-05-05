@@ -14,7 +14,7 @@ export const Route = createFileRoute("/ceny")({
   validateSearch: zodValidator(searchSchema),
   head: () => ({
     meta: [
-      { title: "Цены на ремонт и перетяжку кресел в Минске — DRAGO" },
+      { title: "Цены на ремонт и перетяжку кресел | DRAGO Минск" },
       { name: "description", content: "Прайс на ремонт и перетяжку офисных и компьютерных кресел в Минске. Без скрытых платежей." },
       { property: "og:title", content: "Цены — DRAGO" },
       { property: "og:description", content: "Прайс на ремонт и перетяжку кресел." },
