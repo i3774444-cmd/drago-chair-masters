@@ -73,20 +73,21 @@ function Page() {
             <Phone className="w-5 h-5" /> Вызвать мастера
           </button>
 
-          {/* Map placeholder */}
+          {/* Map */}
           <div className="mt-8">
             <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-3">// Где найти</div>
             <div className="relative aspect-[16/10] bg-surface border-2 border-border overflow-hidden">
-              <div className="absolute inset-0 grid-bg opacity-30" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center gap-3">
-                <MapPinned className="w-12 h-12 text-accent" strokeWidth={1.5} />
-                <div className="font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground">
-                  // Яндекс.Карта
-                </div>
-                <div className="text-sm text-foreground font-medium">ул. Притыцкого, 62, цех 4</div>
-              </div>
-              <div className="absolute bottom-3 right-3 font-mono text-[10px] text-muted-foreground">
-                53.9023° N · 27.4489° E
+              <iframe
+                title="DRAGO на карте"
+                src="https://yandex.com/map-widget/v1/?ll=27.4489%2C53.9023&z=15&pt=27.4489,53.9023,pm2rdm"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="w-full h-full border-0"
+                allow="geolocation"
+              />
+              <div className="absolute bottom-3 left-3 bg-background/90 backdrop-blur px-3 py-2 flex items-center gap-2 pointer-events-none">
+                <MapPinned className="w-4 h-4 text-accent" />
+                <span className="text-xs font-medium">ул. Притыцкого, 62, цех 4</span>
               </div>
             </div>
           </div>
