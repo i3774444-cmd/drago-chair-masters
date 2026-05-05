@@ -62,7 +62,7 @@ function Index() {
             <span className="text-accent">а не выбрасываем</span> их.
           </h1>
           <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-2xl">
-            Перетяжка и\u00A0ремонт офисных и\u00A0компьютерных кресел. Честно говорим, что можно починить, а\u00A0что\u00A0— нет.
+            Перетяжка и&nbsp;ремонт офисных и&nbsp;компьютерных кресел. Честно говорим, что можно починить, а&nbsp;что&nbsp;— нет.
           </p>
         </div>
 
