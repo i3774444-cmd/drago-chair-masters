@@ -101,6 +101,8 @@ function Page() {
         </div>
         <ContactForm source="remont" />
       </section>
+
+      <Faq items={SERVICE_FAQ} />
     </PageShell>
   );
 }
