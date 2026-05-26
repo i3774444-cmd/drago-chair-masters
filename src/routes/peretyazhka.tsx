@@ -2,9 +2,12 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell, PageHeading } from "@/components/PageShell";
 import { ContactForm } from "@/components/ContactForm";
 import { Faq, SERVICE_FAQ } from "@/components/Faq";
-import { Shield, Star, Sparkles, Check, Clock } from "lucide-react";
+import { Shield, Star, Sparkles, Check, Clock, Scissors, Frown, Wind, Palette, Sofa, Building } from "lucide-react";
 import { MaterialQuiz } from "@/components/MaterialQuiz";
 import { RecommendationLetters } from "@/components/RecommendationLetters";
+import { ProblemsBlock, type Problem } from "@/components/ProblemsBlock";
+import { ReviewsCarousel } from "@/components/ReviewsCarousel";
+import { QuickContacts } from "@/components/QuickContacts";
 
 const serviceLd = {
   "@context": "https://schema.org",
@@ -27,6 +30,43 @@ export const Route = createFileRoute("/peretyazhka")({
   }),
   component: Page,
 });
+
+const problems: Problem[] = [
+  {
+    icon: Scissors,
+    problem: "Обивка протёрлась или порвалась",
+    solution: "Полная замена обивки. Подбираем плотный материал — экокожа 1.2 мм или ткань 600+ г/м².",
+    meta: "от 120 BYN",
+  },
+  {
+    icon: Sofa,
+    problem: "Поролон продавлен, сидеть жёстко",
+    solution: "Меняем наполнитель на ППУ-35 (плотность как в новых креслах). Сиденье снова упругое.",
+    meta: "входит в перетяжку",
+  },
+  {
+    icon: Wind,
+    problem: "Запах от старой обивки",
+    solution: "Снимаем всё до каркаса, чистим, антибактериальная обработка, новая обивка с нуля.",
+  },
+  {
+    icon: Palette,
+    problem: "Не вписывается в новый интерьер",
+    solution: "Каталог из 200+ цветов и фактур. Привезём образцы к вам бесплатно.",
+    meta: "выезд с каталогом — 0 BYN",
+  },
+  {
+    icon: Building,
+    problem: "Партия офисных кресел потеряла вид",
+    solution: "Перетяжка партиями 10–50 шт. без остановки работы офиса. Договор, НДС, закрывающие.",
+    meta: "скидка от 10 шт.",
+  },
+  {
+    icon: Frown,
+    problem: "Жалко выбрасывать любимое кресло",
+    solution: "Восстановим премиальное кресло (Herman Miller, Steelcase, Chairman). Это в 3–4× дешевле нового.",
+  },
+];
 
 const materials = [
   {
@@ -73,57 +113,16 @@ function Page() {
         subtitle="Вернём креслу вид и комфорт. Выберите материал под любой бюджет."
       />
 
-      {/* MATERIALS */}
-      <section className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-20">
-        <h2 className="text-2xl md:text-3xl font-bold mb-10 flex items-baseline gap-3">
-          <span className="font-mono text-accent text-base">//</span> Материалы
-        </h2>
+      {/* 1. PROBLEMS */}
+      <ProblemsBlock
+        kicker="// С чем приходят"
+        title="Узнайте свою ситуацию"
+        subtitle="Шесть типовых причин, по которым кресло отправляют на перетяжку. Каждую решаем по своему сценарию."
+        items={problems}
+      />
 
-        <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
-          {materials.map((m) => (
-            <article
-              key={m.name}
-              className="group relative bg-surface border-2 border-border p-6 lg:p-8 transition-all duration-200 hover:border-accent hover:shadow-[0_20px_50px_-20px_oklch(0.7_0.18_40_/_0.5)]"
-            >
-              <div className="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-wider text-accent border border-accent px-2 py-0.5">
-                {m.badge}
-              </div>
-              <m.icon className="w-12 h-12 text-accent mb-6 transition-transform group-hover:scale-110 group-hover:rotate-[-6deg]" strokeWidth={1.5} />
-              <h3 className="font-bold text-2xl tracking-tight">{m.name}</h3>
-              <div className="font-mono text-accent font-bold text-xl mt-1 mb-6">{m.price}</div>
-
-              <div className="mb-4">
-                <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Плюсы</div>
-                <ul className="space-y-1.5 text-sm">
-                  {m.pros.map((p) => (
-                    <li key={p} className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-accent mt-0.5 shrink-0" /> {p}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Минусы</div>
-                <ul className="space-y-1.5 text-sm text-muted-foreground">
-                  {m.cons.map((c) => (
-                    <li key={c} className="flex items-start gap-2">
-                      <span className="text-destructive mt-0.5">—</span> {c}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </article>
-          ))}
-        </div>
-
-        {/* QUIZ */}
-        <div className="mt-10 flex justify-center">
-          <MaterialQuiz />
-        </div>
-      </section>
-
-      {/* INCLUDES + DEADLINES */}
-      <section className="border-t border-border bg-surface">
+      {/* 2. SOLUTION — что входит + сроки */}
+      <section className="border-y border-border bg-surface">
         <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-20 grid lg:grid-cols-2 gap-10">
           <div>
             <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-4">// Что входит</div>
@@ -160,8 +159,8 @@ function Page() {
         </div>
       </section>
 
-      {/* RECOMMENDATION LETTERS */}
-      <section className="border-t border-border">
+      {/* 3. SOCIAL PROOF — letters + reviews */}
+      <section className="border-b border-border">
         <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-20">
           <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
             <div>
@@ -176,8 +175,64 @@ function Page() {
         </div>
       </section>
 
-      {/* FORM */}
-      <section className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-20 grid lg:grid-cols-[1fr_1fr] gap-10">
+      <section className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-20">
+        <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-4">// Отзывы</div>
+        <h2 className="text-3xl md:text-4xl font-bold mb-10">Что говорят клиенты</h2>
+        <ReviewsCarousel />
+      </section>
+
+      {/* 4. PRICES — материалы + квиз */}
+      <section className="border-t border-border bg-surface">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-20">
+          <h2 className="text-2xl md:text-3xl font-bold mb-10 flex items-baseline gap-3">
+            <span className="font-mono text-accent text-base">//</span> Материалы и цены
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-4 lg:gap-6">
+            {materials.map((m) => (
+              <article
+                key={m.name}
+                className="group relative bg-background border-2 border-border p-6 lg:p-8 transition-all duration-200 hover:border-accent hover:shadow-[0_20px_50px_-20px_oklch(0.7_0.18_40_/_0.5)]"
+              >
+                <div className="absolute top-4 right-4 font-mono text-[10px] uppercase tracking-wider text-accent border border-accent px-2 py-0.5">
+                  {m.badge}
+                </div>
+                <m.icon className="w-12 h-12 text-accent mb-6 transition-transform group-hover:scale-110 group-hover:rotate-[-6deg]" strokeWidth={1.5} />
+                <h3 className="font-bold text-2xl tracking-tight">{m.name}</h3>
+                <div className="font-mono text-accent font-bold text-xl mt-1 mb-6">{m.price}</div>
+
+                <div className="mb-4">
+                  <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Плюсы</div>
+                  <ul className="space-y-1.5 text-sm">
+                    {m.pros.map((p) => (
+                      <li key={p} className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-accent mt-0.5 shrink-0" /> {p}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mb-2">Минусы</div>
+                  <ul className="space-y-1.5 text-sm text-muted-foreground">
+                    {m.cons.map((c) => (
+                      <li key={c} className="flex items-start gap-2">
+                        <span className="text-destructive mt-0.5">—</span> {c}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <div className="mt-10 flex justify-center">
+            <MaterialQuiz />
+          </div>
+        </div>
+      </section>
+
+      {/* 5. FORM */}
+      <section id="zayavka" className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-20 grid lg:grid-cols-[1fr_1fr] gap-10 scroll-mt-24">
         <div>
           <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-4">// Заявка</div>
           <h2 className="text-3xl md:text-5xl font-bold mb-4">Оставьте заявку — посчитаем за 15 минут</h2>
@@ -187,6 +242,9 @@ function Page() {
         </div>
         <ContactForm source="peretyazhka" />
       </section>
+
+      {/* 6. CONTACTS */}
+      <QuickContacts />
 
       <Faq items={SERVICE_FAQ} />
     </PageShell>
