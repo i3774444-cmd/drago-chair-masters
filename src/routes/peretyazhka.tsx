@@ -4,6 +4,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { Faq, SERVICE_FAQ } from "@/components/Faq";
 import { Shield, Star, Sparkles, Check, Clock } from "lucide-react";
 import { MaterialQuiz } from "@/components/MaterialQuiz";
+import { RecommendationLetters } from "@/components/RecommendationLetters";
 
 const serviceLd = {
   "@context": "https://schema.org",
@@ -156,6 +157,22 @@ function Page() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* RECOMMENDATION LETTERS */}
+      <section className="border-t border-border">
+        <div className="mx-auto max-w-7xl px-4 lg:px-8 py-16 lg:py-20">
+          <div className="flex items-end justify-between flex-wrap gap-6 mb-10">
+            <div>
+              <div className="font-mono text-xs text-accent uppercase tracking-[0.2em] mb-4">// Юр. лицам</div>
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight">Рекомендательные письма на бланке</h2>
+              <p className="text-muted-foreground mt-4 max-w-xl">
+                С печатями и&nbsp;подписями от&nbsp;наших корпоративных клиентов. Можем выслать сканы и&nbsp;дать прямой контакт ответственного лица.
+              </p>
+            </div>
+          </div>
+          <RecommendationLetters />
         </div>
       </section>
 
