@@ -4,6 +4,7 @@ import { ContactForm } from "@/components/ContactForm";
 import { Faq, SERVICE_FAQ } from "@/components/Faq";
 import { Shield, Star, Sparkles, Check, Clock } from "lucide-react";
 import { MaterialQuiz } from "@/components/MaterialQuiz";
+import { RecommendationLetters } from "@/components/RecommendationLetters";
 
 const serviceLd = {
   "@context": "https://schema.org",
