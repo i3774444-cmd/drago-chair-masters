@@ -1,0 +1,152 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+}
+
+:root {
+  --radius: 0.25rem;
+  --background: oklch(0.21 0 0);
+  --foreground: oklch(0.97 0 0);
+  --surface: oklch(0.25 0 0);
+  --surface-elevated: oklch(0.29 0 0);
+  --card: oklch(0.25 0 0);
+  --card-foreground: oklch(0.97 0 0);
+  --popover: oklch(0.25 0 0);
+  --popover-foreground: oklch(0.97 0 0);
+  --primary: oklch(0.7 0.18 40);
+  --primary-foreground: oklch(0.15 0 0);
+  --secondary: oklch(0.29 0 0);
+  --secondary-foreground: oklch(0.97 0 0);
+  --muted: oklch(0.29 0 0);
+  --muted-foreground: oklch(0.65 0 0);
+  --accent: oklch(0.7 0.18 40);
+  --accent-foreground: oklch(0.15 0 0);
+  --destructive: oklch(0.6 0.22 27);
+  --destructive-foreground: oklch(0.97 0 0);
+  --border: oklch(0.32 0 0);
+  --input: oklch(0.32 0 0);
+  --ring: oklch(0.7 0.18 40);
+}
+
+.light {
+  --background: oklch(0.99 0 0);
+  --foreground: oklch(0.18 0 0);
+  --surface: oklch(0.96 0 0);
+  --surface-elevated: oklch(0.93 0 0);
+  --card: oklch(0.96 0 0);
+  --card-foreground: oklch(0.18 0 0);
+  --popover: oklch(0.99 0 0);
+  --popover-foreground: oklch(0.18 0 0);
+  --primary: oklch(0.7 0.18 40);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.93 0 0);
+  --secondary-foreground: oklch(0.18 0 0);
+  --muted: oklch(0.93 0 0);
+  --muted-foreground: oklch(0.45 0 0);
+  --accent: oklch(0.65 0.2 40);
+  --accent-foreground: oklch(0.99 0 0);
+  --destructive: oklch(0.55 0.22 27);
+  --destructive-foreground: oklch(0.99 0 0);
+  --border: oklch(0.86 0 0);
+  --input: oklch(0.86 0 0);
+  --ring: oklch(0.65 0.2 40);
+}
+
+@layer base {
+  @font-face {
+    font-family: "Space Grotesk";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/spacegrotesk/v16/V8mDoQDjQSkFtoMM3T6r8E7mF71Q-gOoraIAEj7aUUM.woff2") format("woff2");
+  }
+  @font-face {
+    font-family: "JetBrains Mono";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("https://fonts.gstatic.com/s/jetbrainsmono/v18/tDbY2o-flEEny0FZhsfKu5WU4zr3E_BX0PnT8RD8yKxjPVmUsaaDhw.woff2") format("woff2");
+  }
+
+  * {
+    border-color: var(--color-border);
+  }
+
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-display);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .font-mono, .num {
+    font-family: var(--font-mono);
+    font-feature-settings: "tnum";
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+@layer utilities {
+  .grid-bg {
+    background-image:
+      linear-gradient(to right, oklch(0.3 0 0) 1px, transparent 1px),
+      linear-gradient(to bottom, oklch(0.3 0 0) 1px, transparent 1px);
+    background-size: 48px 48px;
+  }
+  .btn-accent {
+    @apply inline-flex items-center justify-center gap-2 bg-accent text-accent-foreground font-bold px-5 py-3 uppercase tracking-wider text-sm transition-all duration-150 hover:brightness-110 active:translate-y-px border-2 border-accent;
+  }
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 bg-transparent text-foreground font-bold px-5 py-3 uppercase tracking-wider text-sm transition-all duration-150 hover:bg-surface border-2 border-border hover:border-accent;
+  }
+}
