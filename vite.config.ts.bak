@@ -6,10 +6,4 @@
 // You can pass additional config via defineConfig({ vite: { ... } }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-export default defineConfig({
-  vite: {
-    server: {
-      allowedHosts: ['sturdy-tribble-v6446q7r74w7fxqpj-8080.app.github.dev']
-    }
-  }
-});
+export default defineConfig();
