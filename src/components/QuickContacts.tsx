@@ -16,7 +16,7 @@ export function QuickContacts() {
 
             <div className="grid sm:grid-cols-2 gap-px bg-border border-2 border-border">
               <a
-                href="tel:+375291234567"
+                href="tel:+375293821258"
                 className="bg-background p-5 flex items-center gap-3 hover:bg-accent hover:text-accent-foreground transition-colors group"
               >
                 <Phone className="w-5 h-5 text-accent group-hover:text-accent-foreground shrink-0" />
@@ -24,12 +24,12 @@ export function QuickContacts() {
                   <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground group-hover:text-accent-foreground/70">
                     Телефон
                   </div>
-                  <div className="font-mono font-bold">+375 29 123-45-67</div>
+                  <div className="font-mono font-bold">+375 29 382-12-58</div>
                 </div>
               </a>
 
               <a
-                href="https://wa.me/375291234567"
+                href="https://wa.me/375293821258"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background p-5 flex items-center gap-3 hover:bg-accent hover:text-accent-foreground transition-colors group"
@@ -44,7 +44,7 @@ export function QuickContacts() {
               </a>
 
               <a
-                href="https://t.me/drago_by"
+                href="https://t.me/drago_minsk"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-background p-5 flex items-center gap-3 hover:bg-accent hover:text-accent-foreground transition-colors group"
@@ -54,7 +54,7 @@ export function QuickContacts() {
                   <div className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground group-hover:text-accent-foreground/70">
                     Telegram
                   </div>
-                  <div className="font-mono font-bold">@drago_by</div>
+                  <div className="font-mono font-bold">@drago_minsk</div>
                 </div>
               </a>
 

@@ -14,9 +14,10 @@ export function ThemeToggle() {
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const saved = (localStorage.getItem(KEY) as "light" | "dark" | null) ?? "dark";
-    setTheme(saved);
-    applyTheme(saved);
+    const saved = localStorage.getItem(KEY) as "light" | "dark" | null;
+    const initial = saved ?? (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+    setTheme(initial);
+    applyTheme(initial);
     setMounted(true);
   }, []);
 
