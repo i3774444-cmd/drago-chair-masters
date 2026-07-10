@@ -4,7 +4,7 @@ import { Send, CheckCircle2, Building2, User, ImagePlus, X, Loader2 } from "luci
 import { toast } from "sonner";
 import { Link } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
-import { submitLead } from "@/server/leads.functions";
+import { submitLead } from "@/lib/leads.functions";
 
 function fileToBase64(file: File): Promise<string> {
   return new Promise((resolve, reject) => {
