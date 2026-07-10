@@ -1,16 +1,4 @@
-[build]
-  command = "npm run build"
-  publish = "dist/client"
-
-[functions]
-  directory = "netlify/functions"
-
-[[redirects]]
-  from = "/assets/*"
-  to = "/assets/:splat"
-  status = 200
-
 [[redirects]]
   from = "/*"
-  to = "/.netlify/functions/server"
+  to = "/index.html"
   status = 200
